@@ -141,7 +141,7 @@ public class GUI extends javax.swing.JFrame {
     private void saveFile(String fileName) throws IOException {
         fileComplete = new File(fileName);
         PrintWriter writer = new PrintWriter(fileComplete.getAbsolutePath(), "UTF-8");
-        writer.println(content + " </g> "
+        writer.println(content
                 + "</svg>");
         writer.close();
     }
@@ -153,21 +153,31 @@ public class GUI extends javax.swing.JFrame {
 
             case 0: {
                 try {
-                    content = readFile("/home/matej/doska.html");
-                    saveFile(System.getProperty("user.dir") + "/doskakomplet.html");
+                    content = readFile(System.getProperty("user.dir") + "/beagleboneblack.svg");
+                    saveFile(System.getProperty("user.dir") + "/beagleboneblack_full.svg");
                 } catch (IOException ex) {
                     Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             break;
-            case 1:
+            case 1: {
+                try {
+                    content = readFile(System.getProperty("user.dir") + "/raspberry_pi_b+_breadboard.svg");
+                    saveFile(System.getProperty("user.dir") + "/raspberry_pi_b+_breadboard_full.svg");
+                } catch (IOException ex) {
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
             case 2:
+
+                break;
         }
 
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
             try {
-                URI uri = new URI("file://" + fileComplete.getAbsolutePath());
+                URI uri = new URI("file://" + replaceWhiteSpaces(fileComplete.getAbsolutePath()));
                 desktop.browse(uri);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -175,6 +185,10 @@ public class GUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private String replaceWhiteSpaces(String path) {
+        return path.replaceAll("\\s+", "%20");
+    }
 
     private File file;
 
