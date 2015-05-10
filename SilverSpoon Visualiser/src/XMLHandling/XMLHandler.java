@@ -101,7 +101,7 @@ public class XMLHandler {
         Element elFrom = (Element)
                 (elRoute.getElementsByTagName("from")).item(0);
         
-        parseStart(elFrom.getAttribute("uri") , route);
+        parsePin(elFrom.getAttribute("uri") , route);
         parseWaypoint(elFrom.getAttribute("uri") , route);
         
         NodeList nlTo = elRoute.getElementsByTagName("to");
@@ -110,17 +110,23 @@ public class XMLHandler {
             Element elTo = (Element) nlTo.item(i);
             parseWaypoint(elTo.getAttribute("uri") , route);
         }
+        
+        if(!route.getLast().equals("mqtt")) {
+            Element lastTo = (Element) nlTo.item(nlTo.getLength() - 1);
+            parsePin(lastTo.getAttribute("uri") , route);
+        }
+        
         return route;
     }
     
     /**
-     * Gets starting pin from given attribute.
+     * Gets pin from given attribute adds it at the end of route.
      * @param att first attribute of element from
      * @param route object to add start into
      * @throws XMLHandlerException null or empty arguments, invalid structure of
      *                                  attribute
      */
-    private static void parseStart (String att , LinkedList<String> route) throws XMLHandlerException{
+    private static void parsePin (String att , LinkedList<String> route) throws XMLHandlerException{
         if(att == null || att.isEmpty() || route == null)
             throw new XMLHandlerException("attribute can't be null or empty");
         
