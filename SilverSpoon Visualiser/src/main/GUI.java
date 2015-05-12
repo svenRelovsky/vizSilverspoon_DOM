@@ -19,6 +19,7 @@ import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import sun.misc.IOUtils;
 
 /**
@@ -329,6 +330,12 @@ public class GUI extends javax.swing.JFrame {
         chooser.showOpenDialog(null);
         file = chooser.getSelectedFile();
         String fileName = file.getAbsolutePath();
+        if (!fileName.substring(fileName.length() - 4).equals(".xml")) {
+            JOptionPane.showMessageDialog(null, "This is not a xml file, please choose correct file.");
+            jButton2.setEnabled(false);
+        } else {
+            jButton2.setEnabled(true);
+        }
         xmlConfigFile.setText(fileName);
 
     }//GEN-LAST:event_jButton1ActionPerformed
