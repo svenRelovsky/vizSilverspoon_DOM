@@ -28,7 +28,7 @@ public class Main {
 
         int prepinace = args.length;
 
-        if (args[0].equals("-h")) {
+        if (args.length!=0 && args[0].equals("-h")) {
             System.out.println("Arguments that have to be used :\n"
                     + "-i : filepath to XML configuration file - optionable\n"
                     + "-o : filepath to output file - optionable\n"
@@ -42,9 +42,13 @@ public class Main {
                     + "-c : for CubieBoard 2\n");
 
         } else {
-            if (prepinace != 4) {
-                System.err.println("Some parameters are missing type parameter -h for help");
-            }
+            
+            GUI giu = new GUI();
+            giu.run();
+            
+//            if (prepinace != 4) {
+//                System.err.println("Some parameters are missing type parameter -h for help");
+//            }
         }
 
         /*List route;
@@ -61,4 +65,5 @@ public class Main {
          System.out.println(route.get(i));
          }*/
     }
+
 }
