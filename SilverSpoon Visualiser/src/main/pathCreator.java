@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xmlproject;
+package main;
 
 import java.awt.Point;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author sven, marek
  */
-public class XMLproject {
+public class pathCreator {
     
     /**
      * Current position 
@@ -34,7 +34,7 @@ public class XMLproject {
      * @param startPos
      * @param fullRoute 
      */
-    public XMLproject(Point startPos, List<String> fullRoute, int xSize, int ySize){
+    public pathCreator(Point startPos, List<String> fullRoute, int xSize, int ySize){
         this.currPos = startPos;
         this.route = fullRoute;
         
@@ -65,150 +65,150 @@ public class XMLproject {
     /**
      * @author Sven
      */
-    public void run(){
-        //input
-        this.svg += fromPinoutPath();
-        
-        //Path itself
-        //Not Impl. yet
-        
-        //output
-        if(!pinOutput.isEmpty()){
-            this.svg += toPinoutPath();
-        }else{
-            this.svg += toEthernetPath();
-        }
-        
-    }
-    
-    
-    private String fromPinoutPath(String firstElement,int model){
-        throw new UnsupportedOperationException("Not implemented yet!");
-        Point startPosition;
-        switch(model){
-            case 0://raspberry
-                
-                break;
-            case 1://beaglebone
-                break;
-            case 2://cubieboard
-                break;
-            default:
-        }
-        
-        
-    }
-    
-    private String toPinoutPath(){
-        throw new UnsupportedOperationException("Not implemented yet!");
-    }
-    
-    private String toEthernetPath(){
-        throw new UnsupportedOperationException("Not implemented yet!");
-    }
-    
-    
-    /**
-     * Computation of maximal elements on one line so there will not be only 1 or 2 e on newline
-     * @author Sven
-     * @param totalCount
-     * @return 
-     */
-    private static int computeCountOnLine(int totalCount){
-        int maxCountOnLine;
-        if(totalCount > 15){
-            throw new IndexOutOfBoundsException("Unsupported count of elements in path!");
-        }
-        
-        if (totalCount > 5) {
-            maxCountOnLine = 5;
-            if ((totalCount % 5) < 3 && (totalCount % 5) != 0) {
-                if (totalCount % 3 == 0 ) {
-                    maxCountOnLine = 3;
-                }else{
-                if (totalCount % 3 == 1 ){
-                    if(totalCount % 4 > totalCount % 5){
-                        maxCountOnLine = 4;
-                    }             
-                }
-                }
-                
-            }
-            if (totalCount % 4 == 0) {
-                    maxCountOnLine = 4;
-            }
-        }else{
-            maxCountOnLine = totalCount;
-        }
-        return maxCountOnLine;
-    }
-    
-    private static String printElementsInLine(List<String> route ){
-        return null; //not implemented yet
-    }
-    
-    /**
-     * @param s -the name of rectangles
-     * @param posX - X starting position
-     * @param posY - Y starting position
-     * @param maxSizeX - lenght of line
-     */
-    private static String printRoutePath(){
-        
-        int line = 1;
-        int xSizeOfRect = 50;
-        int ySizeOfRect = 50;
-        int currX = posX+50;
-        int currY = posY+50;
-        String res = "";
-        // Computation number of elements in one line implemented for 3,4,5
-        int maxCount = computeCountOnLine( route.size() );
-        
-        //computation number of lines
-        int numberOfLines;
-        if((route.size()) % maxCount == 0){
-            numberOfLines = (route.size()) | maxCount;
-        }else{
-            numberOfLines = ((route.size()) | maxCount) + 1 ;
-        }
-        
-        
-        for(int i = 0; i < numberOfLines; i++){
-            if(i == numberOfLines - 1 && route.size() % maxCount != 0){
-            // last not fully writen line  
-              
-                for(int j = 0; j < route.size() % maxCount; j++){
-                    
-                }
-                
-            }else{
-            //not the last line, contains full number of elements
-                for(int j=0; j < maxCount; j++){
-                    
-                }
-            }
-        }
-            
-            
-            
-        
+//    public void run(){
+//        //input
+//        this.svg += fromPinoutPath();
 //        
-//        for(String text :route){
-//            if(line%2 == 0){
-//                res += "<g>"; //begining of group
-//                res += "<rect x=\""+currX+"\" y=\""+currY+"\" width=\""+xSizeOfRect+"\" height=\""+ySizeOfRect+"\" fill=\"white\" ></rect>";
-//                res += "  <text x=\""+(currX+10)+"\" y=\""+(currY+10)+"\" font-family=\"Verdana\" font-size=\"20\" fill=\"blue\" > " + text + " </text>";
-//                res += "</g>"; //end of group
-//                currX += xSizeOfRect + 20;
-//                if(currX+xSizeOfRect+10 > maxSizeX){
-//                    line++;
+//        //Path itself
+//        //Not Impl. yet
+//        
+//        //output
+//        if(!pinOutput.isEmpty()){
+//            this.svg += toPinoutPath();
+//        }else{
+//            this.svg += toEthernetPath();
+//        }
+//        
+//    }
+//    
+//    
+//    private String fromPinoutPath(String firstElement,int model){
+//        throw new UnsupportedOperationException("Not implemented yet!");
+//        Point startPosition;
+//        switch(model){
+//            case 0://raspberry
+//                
+//                break;
+//            case 1://beaglebone
+//                break;
+//            case 2://cubieboard
+//                break;
+//            default:
+//        }
+//        
+//        
+//    }
+//    
+//    private String toPinoutPath(){
+//        throw new UnsupportedOperationException("Not implemented yet!");
+//    }
+//    
+//    private String toEthernetPath(){
+//        throw new UnsupportedOperationException("Not implemented yet!");
+//    }
+//    
+//    
+//    /**
+//     * Computation of maximal elements on one line so there will not be only 1 or 2 e on newline
+//     * @author Sven
+//     * @param totalCount
+//     * @return 
+//     */
+//    private static int computeCountOnLine(int totalCount){
+//        int maxCountOnLine;
+//        if(totalCount > 15){
+//            throw new IndexOutOfBoundsException("Unsupported count of elements in path!");
+//        }
+//        
+//        if (totalCount > 5) {
+//            maxCountOnLine = 5;
+//            if ((totalCount % 5) < 3 && (totalCount % 5) != 0) {
+//                if (totalCount % 3 == 0 ) {
+//                    maxCountOnLine = 3;
+//                }else{
+//                if (totalCount % 3 == 1 ){
+//                    if(totalCount % 4 > totalCount % 5){
+//                        maxCountOnLine = 4;
+//                    }             
 //                }
-//            }else{
+//                }
 //                
 //            }
+//            if (totalCount % 4 == 0) {
+//                    maxCountOnLine = 4;
+//            }
+//        }else{
+//            maxCountOnLine = totalCount;
 //        }
-        return res;
-    }
+//        return maxCountOnLine;
+//    }
+//    
+//    private static String printElementsInLine(List<String> route ){
+//        return null; //not implemented yet
+//    }
+//    
+//    /**
+//     * @param s -the name of rectangles
+//     * @param posX - X starting position
+//     * @param posY - Y starting position
+//     * @param maxSizeX - lenght of line
+//     */
+//    private static String printRoutePath(){
+//        
+//        int line = 1;
+//        int xSizeOfRect = 50;
+//        int ySizeOfRect = 50;
+//        int currX = posX+50;
+//        int currY = posY+50;
+//        String res = "";
+//        // Computation number of elements in one line implemented for 3,4,5
+//        int maxCount = computeCountOnLine( route.size() );
+//        
+//        //computation number of lines
+//        int numberOfLines;
+//        if((route.size()) % maxCount == 0){
+//            numberOfLines = (route.size()) | maxCount;
+//        }else{
+//            numberOfLines = ((route.size()) | maxCount) + 1 ;
+//        }
+//        
+//        
+//        for(int i = 0; i < numberOfLines; i++){
+//            if(i == numberOfLines - 1 && route.size() % maxCount != 0){
+//            // last not fully writen line  
+//              
+//                for(int j = 0; j < route.size() % maxCount; j++){
+//                    
+//                }
+//                
+//            }else{
+//            //not the last line, contains full number of elements
+//                for(int j=0; j < maxCount; j++){
+//                    
+//                }
+//            }
+//        }
+//            
+//            
+//            
+//        
+////        
+////        for(String text :route){
+////            if(line%2 == 0){
+////                res += "<g>"; //begining of group
+////                res += "<rect x=\""+currX+"\" y=\""+currY+"\" width=\""+xSizeOfRect+"\" height=\""+ySizeOfRect+"\" fill=\"white\" ></rect>";
+////                res += "  <text x=\""+(currX+10)+"\" y=\""+(currY+10)+"\" font-family=\"Verdana\" font-size=\"20\" fill=\"blue\" > " + text + " </text>";
+////                res += "</g>"; //end of group
+////                currX += xSizeOfRect + 20;
+////                if(currX+xSizeOfRect+10 > maxSizeX){
+////                    line++;
+////                }
+////            }else{
+////                
+////            }
+////        }
+//        return res;
+//    }
     
  
 
