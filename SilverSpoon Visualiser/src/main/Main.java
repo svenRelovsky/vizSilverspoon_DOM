@@ -122,7 +122,7 @@ public class Main {
                     System.err.println("Not a valid folder to save!");
                     return;
                 }
-
+                
                 //-------------------Argumenty su v pohode, ide sa kreslit-----------------------
                 switch (deskType) {
 
@@ -200,6 +200,7 @@ public class Main {
             }
         }
 
+        System.out.println("Output file is saved. Everything is OK, application ended without error.");
         /*List route;
          try {
          //Testing xml is in file test.xml (quite obvious)
