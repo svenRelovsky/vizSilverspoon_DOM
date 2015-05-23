@@ -148,18 +148,44 @@ public class pathCreator {
                 }
                 break;
             case 2://cubieboard
+                
                 if(topPin){
-                    
+                    int pinNumber = Integer.parseInt(firstElement.substring(2));
+                    if(firstElement.length()>2){
+                        xCoord = 63 + 7.2 * (pinNumber % 2);
+                        yCoord = 149.4 - 6.8 * (pinNumber % 2);
+                    } else {
+                        xCoord = 67;
+                        yCoord = 138.6;
+                    }
+                    output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + 140 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">";
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 140 + "\" x2=\""+ 62 + "\" "
+                    + "y2=\"" + 140 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
                 }else{
-                    
+                    int pinNumber = Integer.parseInt(firstElement.substring(2));
+                    if(firstElement.length()>2){
+                        xCoord = 63 + 7.2 * (pinNumber % 2);
+                        yCoord = 12.6 - 6.8 * (pinNumber % 2);
+                    } else {
+                        xCoord = 67;
+                        yCoord = 17;
+                    }
+                    output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + 15 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">";
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 15 + "\" x2=\""+ 62 + "\" "
+                    + "y2=\"" + 15 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
+                    output.concat("<line x1=\""+ 62 +"\" y1=\""+ 15 + "\" x2=\""+ 62 + "\" "
+                    + "y2=\"" + 140 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
                 }
+                
                 break;
             default:
         }
         
         return output;
     }
-//    
+    
 //    private String toPinoutPath(){
 //        throw new UnsupportedOperationException("Not implemented yet!");
 //    }
