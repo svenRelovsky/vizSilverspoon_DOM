@@ -6,6 +6,7 @@
 package main;
 
 import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.util.List;
 
 
@@ -82,22 +83,82 @@ public class pathCreator {
 //    }
 //    
 //    
-//    private String fromPinoutPath(String firstElement,int model){
-//        throw new UnsupportedOperationException("Not implemented yet!");
-//        Point startPosition;
-//        switch(model){
-//            case 0://raspberry
-//                
-//                break;
-//            case 1://beaglebone
-//                break;
-//            case 2://cubieboard
-//                break;
-//            default:
-//        }
-//        
-//        
-//    }
+    private String fromPinoutPath(String firstElement,int model){
+        String output = new String();
+        double xCoord,yCoord;
+        switch(model){
+            case 0://raspberry
+                if(firstElement.length() > 2){
+                    int pinNumber = Integer.parseInt(firstElement.substring(2));
+                    if(pinNumber > 19){
+                        yCoord = 12.355;
+                        xCoord = 23.175 + pinNumber * 7.2;
+                    } else {
+                        yCoord = 5.156;
+                        xCoord = 23.175 + (39 - pinNumber) * 7.2;
+                    }
+                } else {
+                    xCoord = 27.643;
+                    yCoord = 11.045;
+                }
+                output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + 34.915 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">";
+                
+                output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 34.915 + "\" x2=\""+ 28.2 + "\" "
+                        + "y2=\"" + 34.915 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
+                break;
+            case 1://beaglebone
+                
+                if(topPin){
+                    if(firstElement.length() > 2){
+                        int pinNumber = Integer.parseInt(firstElement.substring(2));
+//                        xCoord = 127.192 + (pinNumber % 2) * 6.1;
+//                        yCoord = 12 + (pinNumber % 2) * 6.1;
+                        xCoord = 127.22 + (pinNumber % 2) * 6.1;
+                        yCoord = 193.5 - (pinNumber % 2) * 6.5;
+                    } else {
+//                        xCoord = 140.016;
+//                        yCoord = 23.383;
+                        xCoord = 130.8;
+                        yCoord = 181.6;
+                    }
+                    output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + 159.5 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">";
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 159.5 + "\" x2=\""+ 127.5 + "\" "
+                    + "y2=\"" + 159.5 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
+                }else{
+                    if(firstElement.length() > 2){
+                        int pinNumber = Integer.parseInt(firstElement.substring(2));
+//                        xCoord = 3590;
+//                        yCoord = 5337;
+                        xCoord = 127.22 + (pinNumber % 2) * 6.1;
+                        yCoord = 16.35 - (pinNumber % 2) * 6;
+                    } else {
+                        xCoord = 130.3;
+                        yCoord = 22;
+//                        xCoord = 140.305;
+//                        yCoord = 183.988;
+                    }
+                    output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + 30 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">";
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 30 + "\" x2=\""+ 127.5 + "\" "
+                    + "y2=\"" + 30 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
+                    output.concat("<line x1=\""+ 127.5 +"\" y1=\""+ 30 + "\" x2=\""+ 127.5 + "\" "
+                        + "y2=\"" + 159.5 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
+                }
+                break;
+            case 2://cubieboard
+                if(topPin){
+                    
+                }else{
+                    
+                }
+                break;
+            default:
+        }
+        
+        return output;
+    }
 //    
 //    private String toPinoutPath(){
 //        throw new UnsupportedOperationException("Not implemented yet!");
