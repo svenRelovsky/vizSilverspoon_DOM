@@ -179,7 +179,6 @@ public class pathCreator {
                         + "y2=\"" + 3750 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\"/>");
                 }
                 break;
-            default:
         }
         
         return output;
@@ -188,16 +187,103 @@ public class pathCreator {
     /**
      * @author Burda
      */
-    private String toPinoutPath(int model){
+    private String toPinoutPath(String lastElement,int model){
         String output = new String();
+        double xCoord,yCoord;
         switch(model){
             case 0://raspberry
+                if(lastElement.length() > 2){
+                    int pinNumber = Integer.parseInt(lastElement.substring(2));
+                    if(pinNumber > 19){
+                        yCoord = 12.355;
+                        xCoord = 23.175 + pinNumber * 7.2;
+                    } else {
+                        yCoord = 5.156;
+                        xCoord = 23.175 + (39 - pinNumber) * 7.2;
+                    }
+                } else {
+                    xCoord = 27.643;
+                    yCoord = 11.045;
+                }
+                output = "<line x1=\"140\" y1=\"80\" x2=\"185\" y2=\"80\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>";
+                
+                output.concat("<line x1=\"185\" y1=\"80\" x2=\"185\" y2=\"28\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                
+                output.concat("<line x1=\""+ 185 +"\" y1=\""+ 28 + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + 28 + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 28 + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + yCoord + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
                 break;
             case 1://beaglebone
+                if(topPin){
+                    int pinNumber = Integer.parseInt(lastElement.substring(2));
+                    if(lastElement.length()>2){
+                        xCoord = 63 + 7.2 * (pinNumber % 2);
+                        yCoord = 12.6 - 6.8 * (pinNumber % 2);
+                    } else {
+                        xCoord = 67;
+                        yCoord = 17;
+                    }
+                    output = "<line x1=\""+ 180 +"\" y1=\""+ 80 + "\" x2=\""+ 200 + "\" "
+                        + "y2=\"" + 80 + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>";
+                    output.concat("<line x1=\""+ 200 +"\" y1=\""+ 80 + "\" x2=\""+ 200 + "\" "
+                    + "y2=\"" + 24 + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                    output.concat("<line x1=\""+ 200 +"\" y1=\""+ 24 + "\" x2=\""+ xCoord + "\" "
+                    + "y2=\"" + 24 + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 24 + "\" x2=\""+ xCoord + "\" "
+                    + "y2=\"" + yCoord + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                }else{
+                    int pinNumber = Integer.parseInt(lastElement.substring(2));
+                    if(lastElement.length()>2){
+                        xCoord = 63 + 7.2 * (pinNumber % 2);
+                        yCoord = 149.4 - 6.8 * (pinNumber % 2);
+                    } else {
+                        xCoord = 67;
+                        yCoord = 138.6;
+                    }
+                    output = "<line x1=\""+ 180 +"\" y1=\""+ 80 + "\" x2=\""+ 200 + "\" "
+                        + "y2=\"" + 80 + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>";
+                    output.concat("<line x1=\""+ 200 +"\" y1=\""+ 80 + "\" x2=\""+ 200 + "\" "
+                    + "y2=\"" + 125 + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                    output.concat("<line x1=\""+ 200 +"\" y1=\""+ 125 + "\" x2=\""+ xCoord + "\" "
+                    + "y2=\"" + 125 + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 125 + "\" x2=\""+ xCoord + "\" "
+                    + "y2=\"" + yCoord + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                }
+                
                 break;
             case 2://cubieboard
+                if(topPin){
+                    if(lastElement.length() > 2){
+                        int pinNumber = Integer.parseInt(lastElement.substring(2));
+                        xCoord = 3590 + (pinNumber % 2) * 174.2;
+                        yCoord = 330 - (pinNumber % 2) * 171.5;
+                    } else {
+
+                        xCoord = 3650;
+                        yCoord = 650;
+                    }
+                    output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + 850 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>";
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 850 + "\" x2=\""+ 3750 + "\" "
+                    + "y2=\"" + 850 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>");
+                }else{
+                    if(lastElement.length() > 2){
+                        int pinNumber = Integer.parseInt(lastElement.substring(2));
+                        xCoord = 3590 + (pinNumber % 2) * 174.2;
+                        yCoord = 5337 + (pinNumber % 2) * 171.5;
+                    } else {
+                        xCoord = 3650;
+                        yCoord = 5200;
+                    }
+                    output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + 5000 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>";
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 5000 + "\" x2=\""+ 850 + "\" "
+                    + "y2=\"" + 5000 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>");
+                    output.concat("<line x1=\""+ 850 +"\" y1=\""+ 5000 + "\" x2=\""+ 850 + "\" "
+                        + "y2=\"" + 3750 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>");
+                }
                 break;
-                
         }
         return output;
     }
