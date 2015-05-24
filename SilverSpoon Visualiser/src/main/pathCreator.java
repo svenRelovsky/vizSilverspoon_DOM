@@ -83,6 +83,9 @@ public class pathCreator {
 //    }
 //    
 //    
+    /**
+     * @author Burda
+     */
     private String fromPinoutPath(String firstElement,int model){
         String output = new String();
         double xCoord,yCoord;
@@ -102,12 +105,12 @@ public class pathCreator {
                     yCoord = 11.045;
                 }
                 output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
-                        + "y2=\"" + 25 + "\" style=\"stroke:rgb(255,0,0);stroke-width:1";
+                        + "y2=\"" + 25 + "\" style=\"stroke:rgb(255,0,0);stroke-width:1\"/>";
                 
                 output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 25 + "\" x2=\""+ 27 + "\" "
-                        + "y2=\"" + 25 + "\" style=\"stroke:rgb(255,0,0);stroke-width:1");
+                        + "y2=\"" + 25 + "\" style=\"stroke:rgb(255,0,0);stroke-width:1\"/>");
                 output.concat("<line x1=\""+ 27 +"\" y1=\""+ 25 + "\" x2=\""+ 27 + "\" "
-                        + "y2=\"" + 50 + "\" style=\"stroke:rgb(255,0,0);stroke-width:1");
+                        + "y2=\"" + 50 + "\" style=\"stroke:rgb(255,0,0);stroke-width:1\"/>");
                 break;
             case 1://beaglebone
                 if(topPin){
@@ -120,11 +123,11 @@ public class pathCreator {
                         yCoord = 17;
                     }
                     output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
-                        + "y2=\"" + 20 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">";
+                        + "y2=\"" + 20 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\"/>";
                     output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 20 + "\" x2=\""+ 60 + "\" "
-                    + "y2=\"" + 20 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
+                    + "y2=\"" + 20 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\"/>");
                     output.concat("<line x1=\""+ 60 +"\" y1=\""+ 20 + "\" x2=\""+ 60 + "\" "
-                    + "y2=\"" + 30 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
+                    + "y2=\"" + 30 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\"/>");
                 }else{
                     int pinNumber = Integer.parseInt(firstElement.substring(2));
                     if(firstElement.length()>2){
@@ -135,11 +138,11 @@ public class pathCreator {
                         yCoord = 138.6;
                     }
                     output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
-                        + "y2=\"" + 130 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">";
+                        + "y2=\"" + 130 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\"/>";
                     output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 130 + "\" x2=\""+ 60 + "\" "
-                    + "y2=\"" + 130 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
+                    + "y2=\"" + 130 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\"/>");
                     output.concat("<line x1=\""+ 60 +"\" y1=\""+ 130 + "\" x2=\""+ 60 + "\" "
-                    + "y2=\"" + 30 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\">");
+                    + "y2=\"" + 30 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\"/>");
                 }
                 
                 break;
@@ -156,9 +159,9 @@ public class pathCreator {
                         yCoord = 650;
                     }
                     output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
-                        + "y2=\"" + 850 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\">";
+                        + "y2=\"" + 850 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\"/>";
                     output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 850 + "\" x2=\""+ 3750 + "\" "
-                    + "y2=\"" + 850 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\">");
+                    + "y2=\"" + 850 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\"/>");
                 }else{
                     if(firstElement.length() > 2){
                         int pinNumber = Integer.parseInt(firstElement.substring(2));
@@ -169,11 +172,11 @@ public class pathCreator {
                         yCoord = 5200;
                     }
                     output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
-                        + "y2=\"" + 5000 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\">";
+                        + "y2=\"" + 5000 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\"/>";
                     output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 5000 + "\" x2=\""+ 850 + "\" "
-                    + "y2=\"" + 5000 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\">");
+                    + "y2=\"" + 5000 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\"/>");
                     output.concat("<line x1=\""+ 850 +"\" y1=\""+ 5000 + "\" x2=\""+ 850 + "\" "
-                        + "y2=\"" + 3750 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\">");
+                        + "y2=\"" + 3750 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\"/>");
                 }
                 break;
             default:
@@ -182,13 +185,46 @@ public class pathCreator {
         return output;
     }
     
-//    private String toPinoutPath(){
-//        throw new UnsupportedOperationException("Not implemented yet!");
-//    }
-//    
-//    private String toEthernetPath(){
-//        throw new UnsupportedOperationException("Not implemented yet!");
-//    }
+    /**
+     * @author Burda
+     */
+    private String toPinoutPath(int model){
+        String output = new String();
+        switch(model){
+            case 0://raspberry
+                break;
+            case 1://beaglebone
+                break;
+            case 2://cubieboard
+                break;
+                
+        }
+        return output;
+    }
+
+    /**
+     * @author Burda
+     */
+    private String toEthernetPath(int model){
+        String output = new String();
+        switch(model){
+            case 0://raspberry
+                output = "<line x1=\"140\" y1=\"80\" x2=\"185\" y2=\"80\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>";
+                output.concat("<line x1=\"185\" y1=\"80\" x2=\"185\" y2=\"130\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                output.concat("<line x1=\"185\" y1=\"130\" x2=\"195\" y2=\"130\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                break;
+            case 1://beaglebone
+                output = "<line x1=\"180\" y1=\"80\" x2=\"200\" y2=\"80\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>";
+                output.concat("<line x1=\"200\" y1=\"80\" x2=\"200\" y2=\"110\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                output.concat("<line x1=\"200\" y1=\"110\" x2=\"213\" y2=\"110\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                break;
+            case 2://cubieboard
+                output = "<line x1=\"6500\" y1=\"3000\" x2=\"6500\" y2=\"4250\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>";
+                output.concat("<line x1=\"6500\" y1=\"4250\" x2=\"6900\" y2=\"4250\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>");
+                break;
+        }
+        return output;
+    }
 //    
 //    
 //    /**
