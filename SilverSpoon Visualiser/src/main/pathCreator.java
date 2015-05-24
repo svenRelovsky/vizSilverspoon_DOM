@@ -263,10 +263,16 @@ public class pathCreator {
                         xCoord = 3650;
                         yCoord = 650;
                     }
-                    output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
-                        + "y2=\"" + 850 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>";
-                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 850 + "\" x2=\""+ 3750 + "\" "
-                    + "y2=\"" + 850 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>");
+                    output = "<line x1=\""+ 6500 +"\" y1=\""+ 3000 + "\" x2=\""+ 6500 + "\" "
+                        + "y2=\"" + 4250 + "\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>";
+                    output.concat("<line x1=\""+ 6500 +"\" y1=\""+ 4250 + "\" x2=\""+ 7200 + "\" "
+                    + "y2=\"" + 4250 + "\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>");
+                    output.concat("<line x1=\""+ 6500 +"\" y1=\""+ 4250 + "\" x2=\""+ 7200 + "\" "
+                    + "y2=\"" + 900 + "\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>");
+                    output.concat("<line x1=\""+ 7200 +"\" y1=\""+ 900 + "\" x2=\""+ xCoord + "\" "
+                    + "y2=\"" + 900 + "\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>");
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 900 + "\" x2=\""+ xCoord + "\" "
+                    + "y2=\"" + yCoord + "\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>");
                 }else{
                     if(lastElement.length() > 2){
                         int pinNumber = Integer.parseInt(lastElement.substring(2));
@@ -276,12 +282,12 @@ public class pathCreator {
                         xCoord = 3650;
                         yCoord = 5200;
                     }
-                    output = "<line x1=\""+ xCoord +"\" y1=\""+ yCoord + "\" x2=\""+ xCoord + "\" "
-                        + "y2=\"" + 5000 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>";
-                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 5000 + "\" x2=\""+ 850 + "\" "
-                    + "y2=\"" + 5000 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>");
-                    output.concat("<line x1=\""+ 850 +"\" y1=\""+ 5000 + "\" x2=\""+ 850 + "\" "
-                        + "y2=\"" + 3750 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>");
+                    output = "<line x1=\""+ 6500 +"\" y1=\""+ 3000 + "\" x2=\""+ 6500 + "\" "
+                        + "y2=\"" + 5100 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>";
+                    output.concat("<line x1=\""+ 6500 +"\" y1=\""+ 5100 + "\" x2=\""+ xCoord + "\" "
+                    + "y2=\"" + 5100 + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>");
+                    output.concat("<line x1=\""+ xCoord +"\" y1=\""+ 5100 + "\" x2=\""+ xCoord + "\" "
+                        + "y2=\"" + yCoord + "\" style=\"stroke:rgb(0,0,255);stroke-width:25;stroke-dasharray:5,5\"/>");
                 }
                 break;
         }
