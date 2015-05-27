@@ -5,6 +5,8 @@
  */
 package main;
 
+import XMLHandling.XMLHandler;
+import XMLHandling.XMLHandlerException;
 import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.w3c.dom.Document;
 import sun.misc.IOUtils;
 
 /**
@@ -34,8 +37,8 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         String[] model = new String[3];
-        model[0] = "BeagleBoneBlack";
-        model[1] = "Raspberry Pi B+";
+        model[1] = "BeagleBoneBlack";
+        model[0] = "Raspberry Pi B+";
         model[2] = "CubieBoard 2";
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(model));
 
@@ -247,70 +250,92 @@ public class GUI extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int index = jComboBox1.getSelectedIndex();
+        try {
+            int index = jComboBox1.getSelectedIndex();
+            XMLHandler xmlh = new XMLHandler();
+            Document doc = XMLHandler.loadNewXML(xmlConfigFile.getText());
+            
+            switch (index) {
 
-        switch (index) {
+                case 0: {
 
-            case 0: {
-                try {
-                    InputStream in
-                            = getClass().getResourceAsStream("/incompleteDesks/beagleboneblack.txt");
-                    content = convertStreamToString(in);
-                    //content = readFile(System.getProperty("user.dir") + "/incompleteSvgs/beagleboneblack.svg");
-                    if (jComboBox2.getSelectedIndex() == 0) {
-                        saveFile(saveTo.getText() + "/beagleboneblack_full.svg");
-                    } else {
-                        saveFile(saveTo.getText() + "/beagleboneblack_full.html");
+                    try {
+                        pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
+                        pc.run(saveTo.getText(), index);
+//                        InputStream in
+//                                = getClass().getResourceAsStream("/incompleteDesks/beagleboneblack.txt");
+//                        content = convertStreamToString(in);
+//                        //content = readFile(System.getProperty("user.dir") + "/incompleteSvgs/beagleboneblack.svg");
+//                        if (jComboBox2.getSelectedIndex() == 0) {
+//                            saveFile(saveTo.getText() + "/beagleboneblack_full.svg");
+//                        } else {
+//                            saveFile(saveTo.getText() + "/beagleboneblack_full.html");
+//                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (IOException ex) {
-                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-            break;
-            case 1: {
-                try {
-                    InputStream in
-                            = getClass().getResourceAsStream("/incompleteDesks/raspberry_pi_b+_breadboard.txt");
-                    content = convertStreamToString(in);
-                    //content = readFile(System.getProperty("user.dir") + "/incompleteSvgs/raspberry_pi_b+_breadboard.svg");
-                    if (jComboBox2.getSelectedIndex() == 0) {
-                        saveFile(saveTo.getText() + "/raspberry_pi_b+_breadboard_full.svg");
-                    } else {
-                        saveFile(saveTo.getText() + "/raspberry_pi_b+_breadboard_full.html");
+                break;
+                case 1: {
+                    try {
+                        pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
+                        pc.run(saveTo.getText(), index);
+//                        InputStream in
+//                                = getClass().getResourceAsStream("/incompleteDesks/raspberry_pi_b+_breadboard.txt");
+//                        content = convertStreamToString(in);
+//                        //content = readFile(System.getProperty("user.dir") + "/incompleteSvgs/raspberry_pi_b+_breadboard.svg");
+//                        if (jComboBox2.getSelectedIndex() == 0) {
+//                            saveFile(saveTo.getText() + "/raspberry_pi_b+_breadboard_full.svg");
+//                        } else {
+//                            saveFile(saveTo.getText() + "/raspberry_pi_b+_breadboard_full.html");
+//                        }
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+                    } catch (XMLHandlerException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (IOException ex) {
-                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-            break;
-            case 2: {
-                try {
-                    InputStream in
-                            = getClass().getResourceAsStream("/incompleteDesks/CubieBoard2.txt");
-                    content = convertStreamToString(in);
-                    //content = readFile(System.getProperty("user.dir") + "/incompleteSvgs/CubieBoard2.svg");
-                    if (jComboBox2.getSelectedIndex() == 0) {
-                        saveFile(saveTo.getText() + "/CubieBoard2_full.svg");
-                    } else {
-                        saveFile(saveTo.getText() + "/CubieBoard2_full.html");
+                break;
+                case 2: {
+                    try {
+                        pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
+                        pc.run(saveTo.getText(), index);
+//                        InputStream in
+//                                = getClass().getResourceAsStream("/incompleteDesks/CubieBoard2.txt");
+//                        content = convertStreamToString(in);
+//                        //content = readFile(System.getProperty("user.dir") + "/incompleteSvgs/CubieBoard2.svg");
+//                        if (jComboBox2.getSelectedIndex() == 0) {
+//                            saveFile(saveTo.getText() + "/CubieBoard2_full.svg");
+//                        } else {
+//                            saveFile(saveTo.getText() + "/CubieBoard2_full.html");
+//                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (IOException ex) {
-                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                break;
             }
-            break;
-        }
 
-        if (jCheckBox1.isSelected()) {
-            Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-            if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
-                try {
-                    URI uri = new URI("file://" + replaceWhiteSpaces(fileComplete.getAbsolutePath()));
-                    desktop.browse(uri);
-                } catch (Exception e) {
-                    e.printStackTrace();
+            if (jCheckBox1.isSelected()) {
+                Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+                if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+                    try {
+                        URI uri = new URI("file://" + replaceWhiteSpaces(fileComplete.getAbsolutePath()));
+                        desktop.browse(uri);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
+        } catch (XMLHandlerException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -330,7 +355,7 @@ public class GUI extends javax.swing.JFrame {
         chooser.showOpenDialog(null);
         file = chooser.getSelectedFile();
         String fileName = file.getAbsolutePath();
-        if (!fileName.substring(fileName.length() - 4).equals(".xml")) {
+        if (!fileName.substring(fileName.length() - 4).equals(".xml") || xmlConfigFile.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "This is not a xml file, please choose correct file.");
             jButton2.setEnabled(false);
         } else {
