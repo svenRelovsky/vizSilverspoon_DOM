@@ -112,7 +112,7 @@ public class pathCreator {
                         + "y2=\"" + 50 + "\" style=\"stroke:rgb(255,0,0);stroke-width:1\"/>");
                 break;
             case 1://beaglebone
-                if(topPin){
+                if(firstElement.charAt(1)=='8'){
                     int pinNumber = Integer.parseInt(firstElement.substring(2));
                     if(firstElement.length()>2){
                         xCoord = 63 + 7.2 * (pinNumber % 2);
@@ -146,7 +146,7 @@ public class pathCreator {
                 
                 break;
             case 2://cubieboard
-                if(topPin){
+                if(firstElement.charAt(1)=='8'){
                     if(firstElement.length() > 2){
                         int pinNumber = Integer.parseInt(firstElement.substring(2));
 
@@ -214,7 +214,7 @@ public class pathCreator {
                         + "y2=\"" + yCoord + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
                 break;
             case 1://beaglebone
-                if(topPin){
+                if(lastElement.charAt(1)=='8'){
                     int pinNumber = Integer.parseInt(lastElement.substring(2));
                     if(lastElement.length()>2){
                         xCoord = 63 + 7.2 * (pinNumber % 2);
@@ -252,7 +252,7 @@ public class pathCreator {
                 
                 break;
             case 2://cubieboard
-                if(topPin){
+                if(lastElement.charAt(1)=='8'){
                     if(lastElement.length() > 2){
                         int pinNumber = Integer.parseInt(lastElement.substring(2));
                         xCoord = 3590 + (pinNumber % 2) * 174.2;
@@ -319,9 +319,8 @@ public class pathCreator {
     /**
      * @author Burda
      */
-    private Element toEthernetPath(Element group, int model){
+    private String toEthernetPath(Element group, int model){
         
-        Element g = 
         String output = new String();
         switch(model){
             case 0://raspberry
