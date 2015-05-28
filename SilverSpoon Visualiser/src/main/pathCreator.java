@@ -149,7 +149,7 @@ public class pathCreator {
                  outPath.setAttribute("d", "M "+(currPos.x+xSizeOfRect/2)+", "+currPos.y+
                                 " L "+"140"+ " "+currPos.y //130 means x point of meeting
                     );      
-                 currPos.x = 130;
+                 currPos.x = 140;
                 outPath.setAttribute("stroke", "white");
                 outPath.setAttribute("stroke-width",String.valueOf(1+scale));
         
@@ -628,28 +628,28 @@ public class pathCreator {
         switch (model) {
             case 0://raspberry
                 if (firstElement.length() > 3) {
-                    int pinNumber = Integer.parseInt(firstElement.substring(3,4));
-                    if (pinNumber > 19) {
+                    int pinNumber = Integer.parseInt(firstElement.substring(3));
+                    if (pinNumber < 19) {
                         yCoord = 12.355;
-                        xCoord = 23.175 + pinNumber * 7.2;
+                        xCoord = 23.715 + pinNumber * 7.2;
                     } else {
                         yCoord = 5.156;
-                        xCoord = 23.175 + (39 - pinNumber) * 7.2;
+                        xCoord = 23.715 + (39 - pinNumber) * 7.2;
                     }
                 } else {
-                    xCoord = 27.643;
-                    yCoord = 11.045;
+                    xCoord = 27;
+                    yCoord = 11;
                 }
                 g = doc.createElement("line");
-                g.setAttribute("x1", Double.toString(xCoord));
-                g.setAttribute("y1", Double.toString(yCoord));
-                g.setAttribute("x2", Double.toString(xCoord));
+                g.setAttribute("x1", String.valueOf(xCoord));
+                g.setAttribute("y1", String.valueOf(yCoord));
+                g.setAttribute("x2", String.valueOf(xCoord));
                 g.setAttribute("y2", "25");
                 g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
                 group.appendChild(g);
                 
                 g = doc.createElement("line");
-                g.setAttribute("x1", Double.toString(xCoord));
+                g.setAttribute("x1", String.valueOf(xCoord));
                 g.setAttribute("y1", "25");
                 g.setAttribute("x2", "27");
                 g.setAttribute("y2", "25");
@@ -666,19 +666,19 @@ public class pathCreator {
                 break;
             case 1://beaglebone
                 if (firstElement.charAt(1) == '8') {
-                    int pinNumber = Integer.parseInt(firstElement.substring(3,4));
                     if (firstElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(firstElement.substring(3));
                         xCoord = 63 + 7.2 * (pinNumber / 2);
                         yCoord = 12.6 - 6.8 * (pinNumber % 2);
                     } else {
                         xCoord = 67;
-                        yCoord = 17;
+                        yCoord = 16;
                     }
                     g = doc.createElement("line");
                     g.setAttribute("x1", Double.toString(xCoord));
                     g.setAttribute("y1", Double.toString(yCoord));
                     g.setAttribute("x2", Double.toString(xCoord));
-                    g.setAttribute("y2", "2");
+                    g.setAttribute("y2", "20");
                     g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
                     group.appendChild(g);
                     
@@ -698,8 +698,8 @@ public class pathCreator {
                     g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
                     group.appendChild(g);
                 } else {
-                    int pinNumber = Integer.parseInt(firstElement.substring(3,4));
                     if (firstElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(firstElement.substring(3));
                         xCoord = 63 + 7.2 * (pinNumber / 2);
                         yCoord = 149.4 - 6.8 * (pinNumber % 2);
                     } else {
@@ -717,14 +717,22 @@ public class pathCreator {
                     g = doc.createElement("line");
                     g.setAttribute("x1", Double.toString(xCoord));
                     g.setAttribute("y1", "130");
-                    g.setAttribute("x2", "60");
+                    g.setAttribute("x2", "50");
                     g.setAttribute("y2", "130");
                     g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
-                    g.setAttribute("x1", "60");
+                    g.setAttribute("x1", "50");
                     g.setAttribute("y1", "130");
+                    g.setAttribute("x2", "50");
+                    g.setAttribute("y2", "30");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "50");
+                    g.setAttribute("y1", "30");
                     g.setAttribute("x2", "60");
                     g.setAttribute("y2", "30");
                     g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
@@ -734,10 +742,10 @@ public class pathCreator {
             case 2://cubieboard
                 if (firstElement.charAt(1) == '8') {
                     if (firstElement.length() > 3) {
-                        int pinNumber = Integer.parseInt(firstElement.substring(3,4));
+                        int pinNumber = Integer.parseInt(firstElement.substring(3));
 
-                        xCoord = 3590 + (pinNumber / 2) * 174.2;
-                        yCoord = 330 - (pinNumber % 2) * 171.5;
+                        xCoord = 3590 + (pinNumber / 2) * 179;
+                        yCoord = 330 + (pinNumber % 2) * 172;
                     } else {
 
                         xCoord = 3650;
@@ -748,22 +756,30 @@ public class pathCreator {
                     g.setAttribute("y1", Double.toString(yCoord));
                     g.setAttribute("x2", Double.toString(xCoord));
                     g.setAttribute("y2", "850");
-                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:25");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
                     g.setAttribute("x1", Double.toString(xCoord));
                     g.setAttribute("y1", "850");
-                    g.setAttribute("x2", "3750");
+                    g.setAttribute("x2", "3450");
                     g.setAttribute("y2", "850");
-                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:25");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "3450");
+                    g.setAttribute("y1", "850");
+                    g.setAttribute("x2", "3450");
+                    g.setAttribute("y2", "1100");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:25");
                     group.appendChild(g);
                     
                 } else {
                     if (firstElement.length() > 3) {
-                        int pinNumber = Integer.parseInt(firstElement.substring(3,4));
-                        xCoord = 3590 + (pinNumber / 2) * 174.2;
-                        yCoord = 5337 + (pinNumber % 2) * 171.5;
+                        int pinNumber = Integer.parseInt(firstElement.substring(3));
+                        xCoord = 3590 + (pinNumber / 2) * 179;
+                        yCoord = 5337 + (pinNumber % 2) * 172;
                     } else {
                         xCoord = 3650;
                         yCoord = 5200;
@@ -773,24 +789,48 @@ public class pathCreator {
                     g.setAttribute("x1", Double.toString(xCoord));
                     g.setAttribute("y1", Double.toString(yCoord));
                     g.setAttribute("x2", Double.toString(xCoord));
-                    g.setAttribute("y2", "5000");
-                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    g.setAttribute("y2", "5100");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:25");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
                     g.setAttribute("x1", Double.toString(xCoord));
-                    g.setAttribute("y1", "5000");
-                    g.setAttribute("x2", "850");
-                    g.setAttribute("y2", "5000");
-                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    g.setAttribute("y1", "5100");
+                    g.setAttribute("x2", "3550");
+                    g.setAttribute("y2", "5100");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:25");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
-                    g.setAttribute("x1", "850");
-                    g.setAttribute("y1", "5000");
-                    g.setAttribute("x2", "850");
+                    g.setAttribute("x1", "3550");
+                    g.setAttribute("y1", "5100");
+                    g.setAttribute("x2", "3550");
                     g.setAttribute("y2", "3750");
-                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:25");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "3550");
+                    g.setAttribute("y1", "3750");
+                    g.setAttribute("x2", "3100");
+                    g.setAttribute("y2", "3750");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:25");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "3100");
+                    g.setAttribute("y1", "3750");
+                    g.setAttribute("x2", "3100");
+                    g.setAttribute("y2", "1100");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:25");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "3100");
+                    g.setAttribute("y1", "1100");
+                    g.setAttribute("x2", "3450");
+                    g.setAttribute("y2", "1100");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:25");
                     group.appendChild(g);
                 }
                 break;
@@ -805,37 +845,37 @@ public class pathCreator {
         switch (model) {
             case 0://raspberry
                 if (lastElement.length() > 3) {
-                    int pinNumber = Integer.parseInt(lastElement.substring(3,4));
-                    if (pinNumber > 19) {
+                    int pinNumber = Integer.parseInt(lastElement.substring(3));
+                    if (pinNumber < 19) {
                         yCoord = 12.355;
-                        xCoord = 23.175 + pinNumber * 7.2;
+                        xCoord = 23.715 + pinNumber * 7.2;
                     } else {
                         yCoord = 5.156;
-                        xCoord = 23.175 + (39 - pinNumber) * 7.2;
+                        xCoord = 23.715 + (39 - pinNumber) * 7.2;
                     }
                 } else {
-                    xCoord = 27.643;
+                    xCoord = 27;
                     yCoord = 11.045;
                 }
                 
                 g = doc.createElement("line");
-                g.setAttribute("x1", String.valueOf(currPos.x + 1));
+                g.setAttribute("x1", String.valueOf(currPos.x+3));
                 g.setAttribute("y1", String.valueOf(currPos.y));
-                g.setAttribute("x2", String.valueOf(currPos.x + 1));
+                g.setAttribute("x2", String.valueOf(currPos.x+3));
                 g.setAttribute("y2", "80");
                 g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                 group.appendChild(g);
                 
                 g = doc.createElement("line");
-                g.setAttribute("x1", String.valueOf(currPos.x + 1));
+                g.setAttribute("x1", String.valueOf(currPos.x+3));
                 g.setAttribute("y1", "80");
-                g.setAttribute("x2", String.valueOf(currPos.x + 1));
+                g.setAttribute("x2", String.valueOf(currPos.x + 3));
                 g.setAttribute("y2", "28");
                 g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                 group.appendChild(g);
 
                 g = doc.createElement("line");
-                g.setAttribute("x1", String.valueOf(currPos.x + 1));
+                g.setAttribute("x1", String.valueOf(currPos.x + 3));
                 g.setAttribute("y1", "28");
                 g.setAttribute("x2", Double.toString(xCoord));
                 g.setAttribute("y2", "28");
@@ -853,7 +893,7 @@ public class pathCreator {
                 break;
             case 1://beaglebone
                 if (lastElement.charAt(1) == '8') {
-                    int pinNumber = Integer.parseInt(lastElement.substring(3,4));
+                    int pinNumber = Integer.parseInt(lastElement.substring(3));
                     if (lastElement.length() > 3) {
                         xCoord = 63 + 7.2 * (pinNumber / 2);
                         yCoord = 12.6 - 6.8 * (pinNumber % 2);
@@ -864,7 +904,7 @@ public class pathCreator {
                     
                     g = doc.createElement("line");
                     g.setAttribute("x1", String.valueOf(currPos.x + 1));
-                    g.setAttribute("y1", String.valueOf(currPos.x));
+                    g.setAttribute("y1", String.valueOf(currPos.y));
                     g.setAttribute("x2", String.valueOf(currPos.x + 1));
                     g.setAttribute("y2", "80");
                     g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
@@ -894,8 +934,8 @@ public class pathCreator {
                     g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                     group.appendChild(g);
                 } else {
-                    int pinNumber = Integer.parseInt(lastElement.substring(3,4));
                     if (lastElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(lastElement.substring(3));
                         xCoord = 63 + 7.2 * (pinNumber / 2);
                         yCoord = 149.4 - 6.8 * (pinNumber % 2);
                     } else {
@@ -904,16 +944,16 @@ public class pathCreator {
                     }
                     
                     g = doc.createElement("line");
-                    g.setAttribute("x1", "180");
-                    g.setAttribute("y1", "80");
+                    g.setAttribute("x1", String.valueOf(currPos.x + 1) );
+                    g.setAttribute("y1", String.valueOf(currPos.y));
                     g.setAttribute("x2", "200");
-                    g.setAttribute("y2", "80");
+                    g.setAttribute("y2", String.valueOf(currPos.y));
                     g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
                     g.setAttribute("x1", "200");
-                    g.setAttribute("y1", "80");
+                    g.setAttribute("y1", String.valueOf(currPos.y));
                     g.setAttribute("x2", "200");
                     g.setAttribute("y2", "125");
                     g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
@@ -940,9 +980,9 @@ public class pathCreator {
             case 2://cubieboard
                 if (lastElement.charAt(1) == '8') {
                     if (lastElement.length() > 3) {
-                        int pinNumber = Integer.parseInt(lastElement.substring(3,4));
-                        xCoord = 3590 + (pinNumber / 2) * 174.2;
-                        yCoord = 330 - (pinNumber % 2) * 171.5;
+                        int pinNumber = Integer.parseInt(lastElement.substring(3));
+                        xCoord = 3590 + (pinNumber / 2) * 179;
+                        yCoord = 330 + (pinNumber % 2) * 172;
                     } else {
 
                         xCoord = 3650;
@@ -950,27 +990,19 @@ public class pathCreator {
                     }
                     
                     g = doc.createElement("line");
-                    g.setAttribute("x1", "6500");
-                    g.setAttribute("y1", "3000");
-                    g.setAttribute("x2", "6500");
-                    g.setAttribute("y2", "4250");
-                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
-                    group.appendChild(g);
-                    
-                    g = doc.createElement("line");
-                    g.setAttribute("x1", "6500");
-                    g.setAttribute("y1", "4250");
+                    g.setAttribute("x1", String.valueOf(currPos.x +25));
+                    g.setAttribute("y1", String.valueOf(currPos.y));
                     g.setAttribute("x2", "7200");
-                    g.setAttribute("y2", "4250");
-                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    g.setAttribute("y2", String.valueOf(currPos.y));
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:25");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
                     g.setAttribute("x1", "7200");
-                    g.setAttribute("y1", "4250");
+                    g.setAttribute("y1", String.valueOf(currPos.y));
                     g.setAttribute("x2", "7200");
                     g.setAttribute("y2", "900");
-                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:25");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
@@ -978,7 +1010,7 @@ public class pathCreator {
                     g.setAttribute("y1", "900");
                     g.setAttribute("x2", Double.toString(xCoord));
                     g.setAttribute("y2", "900");
-                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:25");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
@@ -986,31 +1018,31 @@ public class pathCreator {
                     g.setAttribute("y1", "900");
                     g.setAttribute("x2", Double.toString(xCoord));
                     g.setAttribute("y2", Double.toString(yCoord));
-                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:25");
                     group.appendChild(g);
                 } else {
                     if (lastElement.length() > 3) {
-                        int pinNumber = Integer.parseInt(lastElement.substring(3,4));
-                        xCoord = 3590 + (pinNumber / 2) * 174.2;
-                        yCoord = 5337 + (pinNumber % 2) * 171.5;
+                        int pinNumber = Integer.parseInt(lastElement.substring(3));
+                        xCoord = 3590 + (pinNumber / 2) * 179;
+                        yCoord = 5337 + (pinNumber % 2) * 172;
                     } else {
                         xCoord = 3650;
                         yCoord = 5200;
                     }
                     g = doc.createElement("line");
-                    g.setAttribute("x1", "6500");
-                    g.setAttribute("y1", "3000");
-                    g.setAttribute("x2", "6500");
+                    g.setAttribute("x1", String.valueOf(currPos.x + 35));
+                    g.setAttribute("y1", String.valueOf(currPos.y));
+                    g.setAttribute("x2", String.valueOf(currPos.x + 35));
                     g.setAttribute("y2", "5100");
-                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:25");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
-                    g.setAttribute("x1", "6500");
+                    g.setAttribute("x1", String.valueOf(currPos.x + 35));
                     g.setAttribute("y1", "5100");
                     g.setAttribute("x2", Double.toString(xCoord));
                     g.setAttribute("y2", "5100");
-                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:25");
                     group.appendChild(g);
                     
                     g = doc.createElement("line");
@@ -1018,7 +1050,7 @@ public class pathCreator {
                     g.setAttribute("y1", "5100");
                     g.setAttribute("x2", Double.toString(xCoord));
                     g.setAttribute("y2", Double.toString(yCoord));
-                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:25");
                     group.appendChild(g);
                 }
                 break;
@@ -1032,36 +1064,22 @@ public class pathCreator {
         switch (model) {
             case 0://raspberry
                 g0 = doc.createElement("line");
-                g0.setAttribute("x1", String.valueOf(currPos.x + 1)); //TBD
+                g0.setAttribute("x1", String.valueOf(currPos.x+15));
                 g0.setAttribute("y1", String.valueOf(currPos.y));
-                g0.setAttribute("x2", String.valueOf(currPos.x + 1));
+                g0.setAttribute("x2", String.valueOf(currPos.x+15));
                 g0.setAttribute("y2", "80");
                 g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                 group.appendChild(g0);
                 
+                System.out.println(String.valueOf(currPos.x + 1) + " and " + String.valueOf(currPos.y));
+                
                 g0 = doc.createElement("line");
-                g0.setAttribute("x2", String.valueOf(currPos.x + 1));
-                g0.setAttribute("y2", "80");
+                g0.setAttribute("x1", String.valueOf(currPos.x + 1));
+                g0.setAttribute("y1", "80");
                 g0.setAttribute("x2", String.valueOf(currPos.x + 1));
                 g0.setAttribute("y2", "130");
                 g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                 group.appendChild(g0);
-
-//                g0 = doc.createElement("line");
-//                g0.setAttribute("x1", "140");
-//                g0.setAttribute("y1", "80");
-//                g0.setAttribute("x2", "185");
-//                g0.setAttribute("y2", "80");
-//                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
-//                group.appendChild(g0);
-//                
-//                g0 = doc.createElement("line");
-//                g0.setAttribute("x1", "185");
-//                g0.setAttribute("y1", "80");
-//                g0.setAttribute("x2", "185");
-//                g0.setAttribute("y2", "130");
-//                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
-//                group.appendChild(g0);
                 
                 g0 = doc.createElement("line");
                 g0.setAttribute("x1", String.valueOf(currPos.x + 1));
@@ -1120,6 +1138,8 @@ public class pathCreator {
         }
         return group;
     }
+
+
 
 
 }
