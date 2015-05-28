@@ -60,7 +60,7 @@ public class pathCreator {
      * @param fullRoute
      */
     public pathCreator(List<String> fullRoute) {
-        
+        currPos = new Point();
         this.route = fullRoute;
 
         //If the path starts from pin
