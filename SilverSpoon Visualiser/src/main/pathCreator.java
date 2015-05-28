@@ -83,6 +83,186 @@ public class pathCreator {
     /**
      * @author Burda
      */
+    private Element fromPinoutPath(Element group,String firstElement, int model) {
+        Element g;
+        double xCoord, yCoord;
+        switch (model) {
+            case 0://raspberry
+                if (firstElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(firstElement.substring(2));
+                    if (pinNumber > 19) {
+                        yCoord = 12.355;
+                        xCoord = 23.175 + pinNumber * 7.2;
+                    } else {
+                        yCoord = 5.156;
+                        xCoord = 23.175 + (39 - pinNumber) * 7.2;
+                    }
+                } else {
+                    xCoord = 27.643;
+                    yCoord = 11.045;
+                }
+                g = doc.createElement("line");
+                g.setAttribute("x1", Double.toString(xCoord));
+                g.setAttribute("y1", Double.toString(yCoord));
+                g.setAttribute("x2", Double.toString(xCoord));
+                g.setAttribute("y2", "25");
+                g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                group.appendChild(g);
+                
+                g = doc.createElement("line");
+                g.setAttribute("x1", Double.toString(xCoord));
+                g.setAttribute("y1", "25");
+                g.setAttribute("x2", "27");
+                g.setAttribute("y2", "25");
+                g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                group.appendChild(g);
+
+                g = doc.createElement("line");
+                g.setAttribute("x1", "27");
+                g.setAttribute("y1", "25");
+                g.setAttribute("x2", "27");
+                g.setAttribute("y2", "50");
+                g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                group.appendChild(g);
+                break;
+            case 1://beaglebone
+                if (firstElement.charAt(1) == '8') {
+                    int pinNumber = Integer.parseInt(firstElement.substring(2,3));
+                    if (firstElement.length() > 2) {
+                        xCoord = 63 + 7.2 * (pinNumber % 2);
+                        yCoord = 12.6 - 6.8 * (pinNumber % 2);
+                    } else {
+                        xCoord = 67;
+                        yCoord = 17;
+                    }
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", Double.toString(yCoord));
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", "2");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", "20");
+                    g.setAttribute("x2", "60");
+                    g.setAttribute("y2", "20");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "60");
+                    g.setAttribute("y1", "20");
+                    g.setAttribute("x2", "60");
+                    g.setAttribute("y2", "30");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                    group.appendChild(g);
+                } else {
+                    int pinNumber = Integer.parseInt(firstElement.substring(2,3));
+                    if (firstElement.length() > 2) {
+                        xCoord = 63 + 7.2 * (pinNumber % 2);
+                        yCoord = 149.4 - 6.8 * (pinNumber % 2);
+                    } else {
+                        xCoord = 67;
+                        yCoord = 138.6;
+                    }
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", Double.toString(yCoord));
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", "130");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", "130");
+                    g.setAttribute("x2", "60");
+                    g.setAttribute("y2", "130");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "60");
+                    g.setAttribute("y1", "130");
+                    g.setAttribute("x2", "60");
+                    g.setAttribute("y2", "30");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
+                    group.appendChild(g);
+                }
+                break;
+            case 2://cubieboard
+                if (firstElement.charAt(1) == '8') {
+                    if (firstElement.length() > 2) {
+                        int pinNumber = Integer.parseInt(firstElement.substring(2,3));
+
+                        xCoord = 3590 + (pinNumber % 2) * 174.2;
+                        yCoord = 330 - (pinNumber % 2) * 171.5;
+                    } else {
+
+                        xCoord = 3650;
+                        yCoord = 650;
+                    }
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", Double.toString(yCoord));
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", "850");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", "850");
+                    g.setAttribute("x2", "3750");
+                    g.setAttribute("y2", "850");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    group.appendChild(g);
+                    
+                } else {
+                    if (firstElement.length() > 2) {
+                        int pinNumber = Integer.parseInt(firstElement.substring(2,3));
+                        xCoord = 3590 + (pinNumber % 2) * 174.2;
+                        yCoord = 5337 + (pinNumber % 2) * 171.5;
+                    } else {
+                        xCoord = 3650;
+                        yCoord = 5200;
+                    }
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", Double.toString(yCoord));
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", "5000");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", "5000");
+                    g.setAttribute("x2", "850");
+                    g.setAttribute("y2", "5000");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "850");
+                    g.setAttribute("y1", "5000");
+                    g.setAttribute("x2", "850");
+                    g.setAttribute("y2", "3750");
+                    g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:35");
+                    group.appendChild(g);
+                }
+                break;
+        }
+
+        return group;
+    }
+    
+    /**
+     * @author Burda
+     */
     private String fromPinoutPath(String firstElement, int model) {
         String output = new String();
         double xCoord, yCoord;
@@ -181,6 +361,237 @@ public class pathCreator {
         return output;
     }
 
+    /**
+     * @author Burda
+     */
+    private Element toPinoutPath(String lastElement, int model,Element group) {
+        double xCoord, yCoord;
+        Element g;
+        switch (model) {
+            case 0://raspberry
+                if (lastElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(lastElement.substring(2,3));
+                    if (pinNumber > 19) {
+                        yCoord = 12.355;
+                        xCoord = 23.175 + pinNumber * 7.2;
+                    } else {
+                        yCoord = 5.156;
+                        xCoord = 23.175 + (39 - pinNumber) * 7.2;
+                    }
+                } else {
+                    xCoord = 27.643;
+                    yCoord = 11.045;
+                }
+                
+                g = doc.createElement("line");
+                g.setAttribute("x1", "140");
+                g.setAttribute("y1", "80");
+                g.setAttribute("x2", "185");
+                g.setAttribute("y2", "80");
+                g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g);
+                
+                g = doc.createElement("line");
+                g.setAttribute("x1", "185");
+                g.setAttribute("y1", "80");
+                g.setAttribute("x2", "185");
+                g.setAttribute("y2", "28");
+                g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g);
+
+                g = doc.createElement("line");
+                g.setAttribute("x1", "185");
+                g.setAttribute("y1", "28");
+                g.setAttribute("x2", Double.toString(xCoord));
+                g.setAttribute("y2", "28");
+                g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g);
+
+                g = doc.createElement("line");
+                g.setAttribute("x1", Double.toString(xCoord));
+                g.setAttribute("y1", "28");
+                g.setAttribute("x2", Double.toString(xCoord));
+                g.setAttribute("y2", Double.toString(yCoord));
+                g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g);
+                
+                break;
+            case 1://beaglebone
+                if (lastElement.charAt(1) == '8') {
+                    int pinNumber = Integer.parseInt(lastElement.substring(2,3));
+                    if (lastElement.length() > 2) {
+                        xCoord = 63 + 7.2 * (pinNumber % 2);
+                        yCoord = 12.6 - 6.8 * (pinNumber % 2);
+                    } else {
+                        xCoord = 67;
+                        yCoord = 17;
+                    }
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "180");
+                    g.setAttribute("y1", "80");
+                    g.setAttribute("x2", "200");
+                    g.setAttribute("y2", "80");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "200");
+                    g.setAttribute("y1", "80");
+                    g.setAttribute("x2", "200");
+                    g.setAttribute("y2", "24");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "200");
+                    g.setAttribute("y1", "24");
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", "24");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", "24");
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", Double.toString(yCoord));
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                    group.appendChild(g);
+                } else {
+                    int pinNumber = Integer.parseInt(lastElement.substring(2,3));
+                    if (lastElement.length() > 2) {
+                        xCoord = 63 + 7.2 * (pinNumber % 2);
+                        yCoord = 149.4 - 6.8 * (pinNumber % 2);
+                    } else {
+                        xCoord = 67;
+                        yCoord = 138.6;
+                    }
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "180");
+                    g.setAttribute("y1", "80");
+                    g.setAttribute("x2", "200");
+                    g.setAttribute("y2", "80");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "200");
+                    g.setAttribute("y1", "80");
+                    g.setAttribute("x2", "200");
+                    g.setAttribute("y2", "125");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "200");
+                    g.setAttribute("y1", "125");
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", "125");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", "125");
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", Double.toString(yCoord));
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                    group.appendChild(g);
+                }
+
+                break;
+            case 2://cubieboard
+                if (lastElement.charAt(1) == '8') {
+                    if (lastElement.length() > 2) {
+                        int pinNumber = Integer.parseInt(lastElement.substring(2));
+                        xCoord = 3590 + (pinNumber % 2) * 174.2;
+                        yCoord = 330 - (pinNumber % 2) * 171.5;
+                    } else {
+
+                        xCoord = 3650;
+                        yCoord = 650;
+                    }
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "6500");
+                    g.setAttribute("y1", "3000");
+                    g.setAttribute("x2", "6500");
+                    g.setAttribute("y2", "4250");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "6500");
+                    g.setAttribute("y1", "4250");
+                    g.setAttribute("x2", "7200");
+                    g.setAttribute("y2", "4250");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "7200");
+                    g.setAttribute("y1", "4250");
+                    g.setAttribute("x2", "7200");
+                    g.setAttribute("y2", "900");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "7200");
+                    g.setAttribute("y1", "900");
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", "900");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", "900");
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", Double.toString(yCoord));
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    group.appendChild(g);
+                } else {
+                    if (lastElement.length() > 2) {
+                        int pinNumber = Integer.parseInt(lastElement.substring(2));
+                        xCoord = 3590 + (pinNumber % 2) * 174.2;
+                        yCoord = 5337 + (pinNumber % 2) * 171.5;
+                    } else {
+                        xCoord = 3650;
+                        yCoord = 5200;
+                    }
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "6500");
+                    g.setAttribute("y1", "3000");
+                    g.setAttribute("x2", "6500");
+                    g.setAttribute("y2", "5100");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", "6500");
+                    g.setAttribute("y1", "5100");
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", "5100");
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    group.appendChild(g);
+                    
+                    g = doc.createElement("line");
+                    g.setAttribute("x1", Double.toString(xCoord));
+                    g.setAttribute("y1", "5100");
+                    g.setAttribute("x2", Double.toString(xCoord));
+                    g.setAttribute("y2", Double.toString(yCoord));
+                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                    group.appendChild(g);
+                }
+                break;
+        }
+        return group;
+    }
+    
+    
     /**
      * @author Burda
      */
@@ -318,28 +729,86 @@ public class pathCreator {
     /**
      * @author Burda
      */
-    private String toEthernetPath(Element group, int model) {
-
-        String output = new String();
+    private Element toEthernetPath(Element group, int model) {
+        Element g0;
         switch (model) {
             case 0://raspberry
-
-                output = "<line x1=\"140\" y1=\"80\" x2=\"185\" y2=\"80\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>";
-                output.concat("<line x1=\"185\" y1=\"80\" x2=\"185\" y2=\"130\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
-                output.concat("<line x1=\"185\" y1=\"130\" x2=\"195\" y2=\"130\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                g0 = doc.createElement("line");
+                g0.setAttribute("x1", "140");
+                g0.setAttribute("y1", "80");
+                g0.setAttribute("x2", "185");
+                g0.setAttribute("y2", "80");
+                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g0);
+                
+                g0 = doc.createElement("line");
+                g0.setAttribute("x1", "185");
+                g0.setAttribute("y1", "80");
+                g0.setAttribute("x2", "185");
+                g0.setAttribute("y2", "130");
+                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g0);
+                
+                g0 = doc.createElement("line");
+                g0.setAttribute("x1", "185");
+                g0.setAttribute("y1", "130");
+                g0.setAttribute("x2", "195");
+                g0.setAttribute("y2", "130");
+                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g0);
                 break;
             case 1://beaglebone
-                output = "<line x1=\"180\" y1=\"80\" x2=\"200\" y2=\"80\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>";
-                output.concat("<line x1=\"200\" y1=\"80\" x2=\"200\" y2=\"110\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
-                output.concat("<line x1=\"200\" y1=\"110\" x2=\"213\" y2=\"110\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
+                g0 = doc.createElement("line");
+                g0.setAttribute("x1", "180");
+                g0.setAttribute("y1", "80");
+                g0.setAttribute("x2", "200");
+                g0.setAttribute("y2", "80");
+                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g0);
+                
+                g0 = doc.createElement("line");
+                g0.setAttribute("x1", "200");
+                g0.setAttribute("y1", "80");
+                g0.setAttribute("x2", "200");
+                g0.setAttribute("y2", "110");
+                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g0);
+                
+                g0 = doc.createElement("line");
+                g0.setAttribute("x1", "200");
+                g0.setAttribute("y1", "110");
+                g0.setAttribute("x2", "213");
+                g0.setAttribute("y2", "110");
+                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g0);
+                
                 break;
             case 2://cubieboard
-                output = "<line x1=\"6500\" y1=\"3000\" x2=\"6500\" y2=\"4250\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>";
-                output.concat("<line x1=\"6500\" y1=\"4250\" x2=\"6900\" y2=\"4250\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>");
+                g0 = doc.createElement("line");
+                g0.setAttribute("x1", "6500");
+                g0.setAttribute("y1", "3000");
+                g0.setAttribute("x2", "6500");
+                g0.setAttribute("y2", "4250");
+                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
+                group.appendChild(g0);
+                
+                g0 = doc.createElement("line");
+                g0.setAttribute("x1", "6500");
+                g0.setAttribute("y1", "4250");
+                g0.setAttribute("x2", "6900");
+                g0.setAttribute("y2", "4250");
+                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
+                group.appendChild(g0);
+                
                 break;
+                
+            default:
+                return null;
         }
-        return output;
+        return group;
     }
+    
+    
     /*
      This is what should defs look like for printing nice arrowheads
      <defs>
@@ -505,18 +974,6 @@ public class pathCreator {
         StreamResult result = new StreamResult(new FileOutputStream(new File(path)));
 
         transformer.transform(source, result);
-    }
-
-    private String fromPinoutPath() {
-        throw new UnsupportedOperationException("Not implemented yet!");
-    }
-
-    private String toPinoutPath() {
-        throw new UnsupportedOperationException("Not implemented yet!");
-    }
-
-    private String toEthernetPath() {
-        throw new UnsupportedOperationException("Not implemented yet!");
     }
 
     private Element manageBoard(int board, Element group) {
