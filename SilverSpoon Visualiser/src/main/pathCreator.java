@@ -981,8 +981,8 @@ public class pathCreator {
                 if (lastElement.charAt(1) == '8') {
                     if (lastElement.length() > 3) {
                         int pinNumber = Integer.parseInt(lastElement.substring(3));
-                        xCoord = 3590 + (pinNumber / 2) * 174.2;
-                        yCoord = 330 + (pinNumber % 2) * 171.5;
+                        xCoord = 3590 + (pinNumber / 2) * 179;
+                        yCoord = 330 + (pinNumber % 2) * 172;
                     } else {
 
                         xCoord = 3650;
@@ -1023,8 +1023,8 @@ public class pathCreator {
                 } else {
                     if (lastElement.length() > 3) {
                         int pinNumber = Integer.parseInt(lastElement.substring(3));
-                        xCoord = 3590 + (pinNumber / 2) * 174.2;
-                        yCoord = 5337 + (pinNumber % 2) * 171.5;
+                        xCoord = 3590 + (pinNumber / 2) * 179;
+                        yCoord = 5337 + (pinNumber % 2) * 172;
                     } else {
                         xCoord = 3650;
                         yCoord = 5200;
@@ -1064,7 +1064,7 @@ public class pathCreator {
         switch (model) {
             case 0://raspberry
                 g0 = doc.createElement("line");
-                g0.setAttribute("x1", String.valueOf(currPos.x+15)); //TBD
+                g0.setAttribute("x1", String.valueOf(currPos.x+15));
                 g0.setAttribute("y1", String.valueOf(currPos.y));
                 g0.setAttribute("x2", String.valueOf(currPos.x+15));
                 g0.setAttribute("y2", "80");
