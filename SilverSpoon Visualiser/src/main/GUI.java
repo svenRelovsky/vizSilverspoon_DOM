@@ -41,12 +41,7 @@ public class GUI extends javax.swing.JFrame {
         model[0] = "Raspberry Pi B+";
         model[2] = "CubieBoard 2";
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(model));
-
-        String[] modelOutput = new String[2];
-        modelOutput[0] = "svg";
-        modelOutput[1] = "html";
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(modelOutput));
-
+        jButton2.setEnabled(false);
         saveTo.setText(System.getProperty("user.dir").toString());
     }
 
@@ -67,8 +62,6 @@ public class GUI extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -123,10 +116,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel1.setText("Choose desk :");
 
-        jLabel2.setText("Save as :");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setText("Save file to");
 
         jLabel4.setText("XML configuration file");
@@ -148,15 +137,9 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(40, 40, 40)
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -173,7 +156,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(xmlConfigFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
@@ -183,15 +166,11 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(saveTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jCheckBox1))
@@ -238,14 +217,10 @@ public class GUI extends javax.swing.JFrame {
     private void saveFile(String fileName) throws IOException {
         fileComplete = new File(fileName);
         PrintWriter writer = new PrintWriter(fileComplete.getAbsolutePath(), "UTF-8");
-        if (jComboBox2.getSelectedIndex() == 0) {
+
             writer.println(content
                     + "</svg>");
-        } else {
-            writer.println("<html> <body>" + content
-                    + "</svg> </body> </html>");
 
-        }
         writer.close();
     }
 
@@ -261,7 +236,7 @@ public class GUI extends javax.swing.JFrame {
 
                     try {
                         pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
-                        pc.run(saveTo.getText(), index);
+                        pc.run(saveTo.getText()+"/out.svg", index);
 //                        InputStream in
 //                                = getClass().getResourceAsStream("/incompleteDesks/beagleboneblack.txt");
 //                        content = convertStreamToString(in);
@@ -281,7 +256,7 @@ public class GUI extends javax.swing.JFrame {
                 case 1: {
                     try {
                         pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
-                        pc.run(saveTo.getText(), index);
+                        pc.run(saveTo.getText()+"/out.svg", index);
 //                        InputStream in
 //                                = getClass().getResourceAsStream("/incompleteDesks/raspberry_pi_b+_breadboard.txt");
 //                        content = convertStreamToString(in);
@@ -304,7 +279,7 @@ public class GUI extends javax.swing.JFrame {
                 case 2: {
                     try {
                         pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
-                        pc.run(saveTo.getText(), index);
+                        pc.run(saveTo.getText()+"/out.svg", index);
 //                        InputStream in
 //                                = getClass().getResourceAsStream("/incompleteDesks/CubieBoard2.txt");
 //                        content = convertStreamToString(in);
@@ -325,7 +300,7 @@ public class GUI extends javax.swing.JFrame {
                 Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
                 if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
                     try {
-                        URI uri = new URI("file://" + replaceWhiteSpaces(fileComplete.getAbsolutePath()));
+                        URI uri = new URI("file://" + replaceWhiteSpaces(saveTo.getText()+"/out.svg"));
                         desktop.browse(uri);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -355,7 +330,7 @@ public class GUI extends javax.swing.JFrame {
         chooser.showOpenDialog(null);
         file = chooser.getSelectedFile();
         String fileName = file.getAbsolutePath();
-        if (!fileName.substring(fileName.length() - 4).equals(".xml") || xmlConfigFile.getText().isEmpty()) {
+        if (!fileName.substring(fileName.length() - 4).equals(".xml")) {
             JOptionPane.showMessageDialog(null, "This is not a xml file, please choose correct file.");
             jButton2.setEnabled(false);
         } else {
@@ -397,9 +372,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField saveTo;
