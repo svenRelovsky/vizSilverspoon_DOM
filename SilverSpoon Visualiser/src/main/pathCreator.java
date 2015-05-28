@@ -5,6 +5,7 @@
  */
 package main;
 
+import XMLHandling.XMLHandler;
 import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.io.File;
@@ -59,7 +60,7 @@ public class pathCreator {
      * @param startPos
      * @param fullRoute
      */
-    public pathCreator(Point startPos, List<String> fullRoute) {
+    public void pathCreator(Point startPos, List<String> fullRoute) {
         this.currPos = startPos;
         this.route = fullRoute;
 
@@ -849,7 +850,7 @@ public class pathCreator {
     }
 
     /**
-     * Opens XML wellformed document
+     * Opens XML well-formed document
      *
      * @param path
      * @return Opened xml Document
@@ -876,7 +877,7 @@ public class pathCreator {
     }
 
     /**
-     * runs computation of neccessary parts for each board
+     * runs computation of necessary parts for each board
      *
      * @author Sven
      * @param path Path to the specific OUTPUT(.svg)
@@ -888,7 +889,7 @@ public class pathCreator {
         //doc =  openDocument("/home/sven/Downloads/messif/XMLproject/src/xmlproject/test.xml");
         //getClass().getResourceAsStream("/incompleteDesks/beagleboneblack.txt");
         switch (board) {
-            case 0:
+            case 0://rapsberry pi
                 InputStream in
                         = getClass().getResourceAsStream("/incompleteDesks/raspberry_pi_b+_breadboard.svg");
                 String content = convertStreamToString(in);
@@ -898,10 +899,10 @@ public class pathCreator {
                 fw.close();
                 doc = openDocument(CBtemp);
                 break;
-            case 1:
+            case 1://beaglebone
                 //doc = openDocument(convertStreamToString(getClass().getResourceAsStream("/incompleteDesks/beagleboneblack.svg")));
                 break;
-            case 2:
+            case 2://cubieboard
                 //doc = openDocument(convertStreamToString(getClass().getResourceAsStream("/incompleteDesks/CubieBoard2.svg")));
                 break;
         }
@@ -960,20 +961,7 @@ public class pathCreator {
         }
 
         g.appendChild(outPath);
-
-        //output
-     /*   if(!pinOutput.isEmpty()){
-         this.svg += toPinoutPath();
-         }else{
-         this.svg += toEthernetPath();
-         }*/
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer transformer = tf.newTransformer();
-
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new FileOutputStream(new File(path)));
-
-        transformer.transform(source, result);
+        XMLHandler.saveXMLToFile(doc , path + "/out.svg");
     }
 
     private Element manageBoard(int board, Element group) {

@@ -28,9 +28,7 @@ import org.w3c.dom.Document;
 public class Main {
 
     /**
-     * Simple demo, opens XML file, parses it and writes route on console. Ends
-     * with error on any exception thrown (parsing, no file, etc...)
-     *
+     * Command line interface method
      * @param args the command line arguments
      */
     static String content = new String();
@@ -124,12 +122,31 @@ public class Main {
                 }
                 
                 //-------------------Argumenty su v pohode, ide sa kreslit-----------------------
+                List<String> route = null;
+                XMLHandler xmlh = new XMLHandler();
+                
+                
+                try{
+                    Document doc = XMLHandler.loadNewXML(pathXml);
+                    route = XMLHandler.parseRoute(doc);
+                } catch(XMLHandlerException ex) {
+                    System.out.println("Error:" + ex.toString());
+                }
+                
                 switch (deskType) {
-
                     case "beaglebone": {
                         InputStream in
                                 = Main.class.getResourceAsStream("/incompleteDesks/beagleboneblack.txt");
                         content = convertStreamToString(in);
+                        
+                        pathCreator pc = new pathCreator(route);
+                        
+                        try {
+                            pc.run(pathOut , 0);
+                        } catch(Exception ex){
+                            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        
                         if (typeOut.equals("svg")) {
                             try {
                                 saveFile(pathOut + "/beagleboneblack_full.svg", typeOut);
@@ -201,19 +218,6 @@ public class Main {
         }
 
         System.out.println("Output file is saved. Everything is OK, application ended without error.");
-        /*List route;
-         try {
-         //Testing xml is in file test.xml (quite obvious)
-         Document xmlDom = XMLHandler.loadNewXML("test.xml");
-         route = XMLHandler.parseRoute(xmlDom);
-         } catch (XMLHandlerException e) {
-         System.out.println("An error occurred: " + e.toString());
-         return;
-         }
-        
-         for(int i = 0 ; i < route.size() ; i++){
-         System.out.println(route.get(i));
-         }*/
     }
 
     private static String replaceWhiteSpaces(String path) {

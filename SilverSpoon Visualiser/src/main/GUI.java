@@ -252,7 +252,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             int index = jComboBox1.getSelectedIndex();
-            XMLHandler xmlh = new XMLHandler();
+            //XMLHandler xmlh = new XMLHandler();
             Document doc = XMLHandler.loadNewXML(xmlConfigFile.getText());
             
             switch (index) {
@@ -260,7 +260,7 @@ public class GUI extends javax.swing.JFrame {
                 case 0: {
 
                     try {
-                        pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
+                        pathCreator pc = new pathCreator(XMLHandler.parseRoute(doc));
                         pc.run(saveTo.getText(), index);
 //                        InputStream in
 //                                = getClass().getResourceAsStream("/incompleteDesks/beagleboneblack.txt");
@@ -280,7 +280,7 @@ public class GUI extends javax.swing.JFrame {
                 break;
                 case 1: {
                     try {
-                        pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
+                        pathCreator pc = new pathCreator(XMLHandler.parseRoute(doc));
                         pc.run(saveTo.getText(), index);
 //                        InputStream in
 //                                = getClass().getResourceAsStream("/incompleteDesks/raspberry_pi_b+_breadboard.txt");
@@ -303,7 +303,7 @@ public class GUI extends javax.swing.JFrame {
                 break;
                 case 2: {
                     try {
-                        pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
+                        pathCreator pc = new pathCreator(XMLHandler.parseRoute(doc));
                         pc.run(saveTo.getText(), index);
 //                        InputStream in
 //                                = getClass().getResourceAsStream("/incompleteDesks/CubieBoard2.txt");
