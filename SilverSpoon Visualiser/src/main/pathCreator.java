@@ -83,13 +83,13 @@ public class pathCreator {
     /**
      * @author Burda
      */
-    private Element fromPinoutPath(Element group,String firstElement, int model) {
+    private Element fromPinoutPath(Element group, String firstElement, int model) {
         Element g;
         double xCoord, yCoord;
         switch (model) {
             case 0://raspberry
-                if (firstElement.length() > 2) {
-                    int pinNumber = Integer.parseInt(firstElement.substring(2));
+                if (firstElement.length() > 3) {
+                    int pinNumber = Integer.parseInt(firstElement.substring(3,4));
                     if (pinNumber > 19) {
                         yCoord = 12.355;
                         xCoord = 23.175 + pinNumber * 7.2;
@@ -127,8 +127,8 @@ public class pathCreator {
                 break;
             case 1://beaglebone
                 if (firstElement.charAt(1) == '8') {
-                    int pinNumber = Integer.parseInt(firstElement.substring(2,3));
-                    if (firstElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(firstElement.substring(3,4));
+                    if (firstElement.length() > 3) {
                         xCoord = 63 + 7.2 * (pinNumber % 2);
                         yCoord = 12.6 - 6.8 * (pinNumber % 2);
                     } else {
@@ -159,8 +159,8 @@ public class pathCreator {
                     g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
                     group.appendChild(g);
                 } else {
-                    int pinNumber = Integer.parseInt(firstElement.substring(2,3));
-                    if (firstElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(firstElement.substring(3,4));
+                    if (firstElement.length() > 3) {
                         xCoord = 63 + 7.2 * (pinNumber % 2);
                         yCoord = 149.4 - 6.8 * (pinNumber % 2);
                     } else {
@@ -194,8 +194,8 @@ public class pathCreator {
                 break;
             case 2://cubieboard
                 if (firstElement.charAt(1) == '8') {
-                    if (firstElement.length() > 2) {
-                        int pinNumber = Integer.parseInt(firstElement.substring(2,3));
+                    if (firstElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(firstElement.substring(3,4));
 
                         xCoord = 3590 + (pinNumber % 2) * 174.2;
                         yCoord = 330 - (pinNumber % 2) * 171.5;
@@ -221,8 +221,8 @@ public class pathCreator {
                     group.appendChild(g);
                     
                 } else {
-                    if (firstElement.length() > 2) {
-                        int pinNumber = Integer.parseInt(firstElement.substring(2,3));
+                    if (firstElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(firstElement.substring(3,4));
                         xCoord = 3590 + (pinNumber % 2) * 174.2;
                         yCoord = 5337 + (pinNumber % 2) * 171.5;
                     } else {
@@ -268,8 +268,8 @@ public class pathCreator {
         double xCoord, yCoord;
         switch (model) {
             case 0://raspberry
-                if (firstElement.length() > 2) {
-                    int pinNumber = Integer.parseInt(firstElement.substring(2));
+                if (firstElement.length() > 3) {
+                    int pinNumber = Integer.parseInt(firstElement.substring(3,4));
                     if (pinNumber > 19) {
                         yCoord = 12.355;
                         xCoord = 23.175 + pinNumber * 7.2;
@@ -291,8 +291,8 @@ public class pathCreator {
                 break;
             case 1://beaglebone
                 if (firstElement.charAt(1) == '8') {
-                    int pinNumber = Integer.parseInt(firstElement.substring(2));
-                    if (firstElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(firstElement.substring(3,4));
+                    if (firstElement.length() > 3) {
                         xCoord = 63 + 7.2 * (pinNumber % 2);
                         yCoord = 12.6 - 6.8 * (pinNumber % 2);
                     } else {
@@ -306,8 +306,8 @@ public class pathCreator {
                     output.concat("<line x1=\"" + 60 + "\" y1=\"" + 20 + "\" x2=\"" + 60 + "\" "
                             + "y2=\"" + 30 + "\" style=\"stroke:rgb(255,0,0);stroke-width:4;stroke-dasharray:5,5\"/>");
                 } else {
-                    int pinNumber = Integer.parseInt(firstElement.substring(2));
-                    if (firstElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(firstElement.substring(3,4));
+                    if (firstElement.length() > 3) {
                         xCoord = 63 + 7.2 * (pinNumber % 2);
                         yCoord = 149.4 - 6.8 * (pinNumber % 2);
                     } else {
@@ -325,8 +325,8 @@ public class pathCreator {
                 break;
             case 2://cubieboard
                 if (firstElement.charAt(1) == '8') {
-                    if (firstElement.length() > 2) {
-                        int pinNumber = Integer.parseInt(firstElement.substring(2));
+                    if (firstElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(firstElement.substring(3,4));
 
                         xCoord = 3590 + (pinNumber % 2) * 174.2;
                         yCoord = 330 - (pinNumber % 2) * 171.5;
@@ -340,8 +340,8 @@ public class pathCreator {
                     output.concat("<line x1=\"" + xCoord + "\" y1=\"" + 850 + "\" x2=\"" + 3750 + "\" "
                             + "y2=\"" + 850 + "\" style=\"stroke:rgb(255,0,0);stroke-width:25;stroke-dasharray:5,5\"/>");
                 } else {
-                    if (firstElement.length() > 2) {
-                        int pinNumber = Integer.parseInt(firstElement.substring(2));
+                    if (firstElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(firstElement.substring(3,4));
                         xCoord = 3590 + (pinNumber % 2) * 174.2;
                         yCoord = 5337 + (pinNumber % 2) * 171.5;
                     } else {
@@ -364,13 +364,13 @@ public class pathCreator {
     /**
      * @author Burda
      */
-    private Element toPinoutPath(String lastElement, int model,Element group) {
+    private Element toPinoutPath(Element group, String lastElement, int model) {
         double xCoord, yCoord;
         Element g;
         switch (model) {
             case 0://raspberry
-                if (lastElement.length() > 2) {
-                    int pinNumber = Integer.parseInt(lastElement.substring(2,3));
+                if (lastElement.length() > 3) {
+                    int pinNumber = Integer.parseInt(lastElement.substring(3,4));
                     if (pinNumber > 19) {
                         yCoord = 12.355;
                         xCoord = 23.175 + pinNumber * 7.2;
@@ -418,8 +418,8 @@ public class pathCreator {
                 break;
             case 1://beaglebone
                 if (lastElement.charAt(1) == '8') {
-                    int pinNumber = Integer.parseInt(lastElement.substring(2,3));
-                    if (lastElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(lastElement.substring(3,4));
+                    if (lastElement.length() > 3) {
                         xCoord = 63 + 7.2 * (pinNumber % 2);
                         yCoord = 12.6 - 6.8 * (pinNumber % 2);
                     } else {
@@ -459,8 +459,8 @@ public class pathCreator {
                     g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                     group.appendChild(g);
                 } else {
-                    int pinNumber = Integer.parseInt(lastElement.substring(2,3));
-                    if (lastElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(lastElement.substring(3,4));
+                    if (lastElement.length() > 3) {
                         xCoord = 63 + 7.2 * (pinNumber % 2);
                         yCoord = 149.4 - 6.8 * (pinNumber % 2);
                     } else {
@@ -504,8 +504,8 @@ public class pathCreator {
                 break;
             case 2://cubieboard
                 if (lastElement.charAt(1) == '8') {
-                    if (lastElement.length() > 2) {
-                        int pinNumber = Integer.parseInt(lastElement.substring(2));
+                    if (lastElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(lastElement.substring(3,4));
                         xCoord = 3590 + (pinNumber % 2) * 174.2;
                         yCoord = 330 - (pinNumber % 2) * 171.5;
                     } else {
@@ -554,8 +554,8 @@ public class pathCreator {
                     g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:35");
                     group.appendChild(g);
                 } else {
-                    if (lastElement.length() > 2) {
-                        int pinNumber = Integer.parseInt(lastElement.substring(2));
+                    if (lastElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(lastElement.substring(3,4));
                         xCoord = 3590 + (pinNumber % 2) * 174.2;
                         yCoord = 5337 + (pinNumber % 2) * 171.5;
                     } else {
@@ -600,8 +600,8 @@ public class pathCreator {
         double xCoord, yCoord;
         switch (model) {
             case 0://raspberry
-                if (lastElement.length() > 2) {
-                    int pinNumber = Integer.parseInt(lastElement.substring(2));
+                if (lastElement.length() > 3) {
+                    int pinNumber = Integer.parseInt(lastElement.substring(3,4));
                     if (pinNumber > 19) {
                         yCoord = 12.355;
                         xCoord = 23.175 + pinNumber * 7.2;
@@ -624,8 +624,8 @@ public class pathCreator {
                 break;
             case 1://beaglebone
                 if (lastElement.charAt(1) == '8') {
-                    int pinNumber = Integer.parseInt(lastElement.substring(2));
-                    if (lastElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(lastElement.substring(3,4));
+                    if (lastElement.length() > 3) {
                         xCoord = 63 + 7.2 * (pinNumber % 2);
                         yCoord = 12.6 - 6.8 * (pinNumber % 2);
                     } else {
@@ -641,8 +641,8 @@ public class pathCreator {
                     output.concat("<line x1=\"" + xCoord + "\" y1=\"" + 24 + "\" x2=\"" + xCoord + "\" "
                             + "y2=\"" + yCoord + "\" style=\"stroke:rgb(0,0,255);stroke-width:1\"/>");
                 } else {
-                    int pinNumber = Integer.parseInt(lastElement.substring(2));
-                    if (lastElement.length() > 2) {
+                    int pinNumber = Integer.parseInt(lastElement.substring(3,4));
+                    if (lastElement.length() > 3) {
                         xCoord = 63 + 7.2 * (pinNumber % 2);
                         yCoord = 149.4 - 6.8 * (pinNumber % 2);
                     } else {
@@ -662,8 +662,8 @@ public class pathCreator {
                 break;
             case 2://cubieboard
                 if (lastElement.charAt(1) == '8') {
-                    if (lastElement.length() > 2) {
-                        int pinNumber = Integer.parseInt(lastElement.substring(2));
+                    if (lastElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(lastElement.substring(3,4));
                         xCoord = 3590 + (pinNumber % 2) * 174.2;
                         yCoord = 330 - (pinNumber % 2) * 171.5;
                     } else {
@@ -682,8 +682,8 @@ public class pathCreator {
                     output.concat("<line x1=\"" + xCoord + "\" y1=\"" + 900 + "\" x2=\"" + xCoord + "\" "
                             + "y2=\"" + yCoord + "\" style=\"stroke:rgb(0,0,255);stroke-width:35\"/>");
                 } else {
-                    if (lastElement.length() > 2) {
-                        int pinNumber = Integer.parseInt(lastElement.substring(2));
+                    if (lastElement.length() > 3) {
+                        int pinNumber = Integer.parseInt(lastElement.substring(3,4));
                         xCoord = 3590 + (pinNumber % 2) * 174.2;
                         yCoord = 5337 + (pinNumber % 2) * 171.5;
                     } else {
