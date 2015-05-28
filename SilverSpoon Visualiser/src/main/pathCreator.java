@@ -115,13 +115,13 @@ public class pathCreator {
         
         switch(board){
            case 0:
-               doc =  openDocument("src/incompleteDesks/raspberry_pi_b+_breadboard.svg");
+               doc =  openDocument("raspberry_pi_b+_breadboard.svg");
                break;
             case 1:
-               doc =  openDocument("src/incompleteDesks/beagleboneblack.svg");
+               doc =  openDocument("beagleboneblack.svg");
                 break;
             case 2:
-               doc =  openDocument("src/incompleteDesks/CubieBoard2.svg");
+               doc =  openDocument("CubieBoard2.svg");
                 break;
         }
         
