@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- input pin spec -->
+
 <beans>
 
   <bean id="webCamBean" class="org.jboss.qa.camel.WebCamBean">
@@ -16,11 +16,11 @@
 
     <route customId="true" id="iot-door-bell-route">
 
-      <from uri="gpio://P8_8?value=HIGH" />
+      <from uri="gpio://P8?value=HIGH" />
 
       <to uri="bean:webCamBean?method=getPicture" />
 
-      <to uri="mqtt://iot-demo?host=tcp://localhost:1883&amp;publishTopicName=IotDemo"/>
+      <to uri="gpio://P9?value=HIGH"/>
 
     </route>
 
