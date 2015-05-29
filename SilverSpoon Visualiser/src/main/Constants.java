@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 /**
@@ -32,10 +27,9 @@ public class Constants {
     public static final String CUBIEBOARD_RESOURCE = 
             "/DeskTemplates/CubieBoard2.svg";
     
-    ////////////////////////////////////////////////////////
-    /******************************************************/
-    ////////////////////////////////////////////////////////
-    //Output types constants
-    public static final int SVG_OUTPUT_TYPE = 0;
-    public static final int HTML_OUTPUT_TYPE = 1;
+    public static final String header = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+            + "<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n"
+            + "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">";
+    public static final String header2 = "<?xml version='1.0' encoding='UTF-8' standalone='no'?>\n"
+            + "<!-- Created with Fritzing (http://www.fritzing.org/) -->";
 }
