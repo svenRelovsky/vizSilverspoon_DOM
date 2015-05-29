@@ -16,7 +16,7 @@
 
     <route customId="true" id="iot-door-bell-route">
 
-      <from uri="gpio://p7?value=HIGH" />
+      <from uri="gpio://P7?value=HIGH" />
 
       <to uri="bean:webCamBean?method=getPicture" />
 
