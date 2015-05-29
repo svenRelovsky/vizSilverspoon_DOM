@@ -1,10 +1,15 @@
 package XMLHandling;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,6 +19,11 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import main.Constants;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,7 +38,7 @@ import org.xml.sax.SAXException;
  */
 
 public class XMLHandler {
-
+    
     /**
      * Loads XML file into DOM Document object.
      * @param inXmlPath path to XML file
@@ -163,15 +173,5 @@ public class XMLHandler {
             throw new XMLHandlerException("attribute can't be null or empty");
         
         route.add(att.substring(0 , att.indexOf(":")));
-    }
-    
-    /**
-     * Validates DOM object against XML schema.
-     * @param xml DOM object
-     * @return true or false if DOM is invalid
-     * @throws XMLHandlerException always, maybe someone will implement it
-     */
-    public boolean validate (Document xml) throws XMLHandlerException{
-        throw new XMLHandlerException("not implemented yet");
     }
 }

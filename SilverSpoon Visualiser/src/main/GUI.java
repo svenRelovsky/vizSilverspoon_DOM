@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +17,12 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     public GUI() {
+        this.setTitle("Silverspoon Visualisator");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
+        xmlConfigFile.setEditable(false);
+        saveTo.setEditable(false);
+        
         String[] model = new String[3];
         model[0] = "Raspberry Pi B+";
         model[1] = "BeagleBoneBlack";
@@ -25,6 +31,7 @@ public class GUI extends javax.swing.JFrame {
         
         //xmlConfigFile.setText(System.getProperty("user.dir"));
         saveTo.setText(System.getProperty("user.dir"));
+        jButton2.setEnabled(false);
     }
 
     /**
@@ -112,11 +119,11 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(xmlConfigFile, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(saveTo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel1)
@@ -176,14 +183,37 @@ public class GUI extends javax.swing.JFrame {
         BackendHandler bh = new BackendHandler();
         
         try {
-            bh.setInputXMLPath(xmlConfigFile.getText());
-            bh.setOutputDirPath(saveTo.getText());
+            String fileName;
+            
+            file = new File(xmlConfigFile.getText());
+            fileName = file.getAbsolutePath();
+            if(file.exists() && file.isFile() && fileName.substring(fileName.length() - 4).equals(".xml")){
+                bh.setInputXMLPath(xmlConfigFile.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Chosen file is not a existing XML file.");
+                jButton2.setEnabled(false);
+                return;
+            }
+            
+            file = new File(saveTo.getText());
+            if(file.exists() && file.isDirectory()){
+                bh.setOutputDirPath(saveTo.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Chosen directory is not valid.");
+                jButton2.setEnabled(false);
+                return;
+            }
+            
             bh.setShowOut(jCheckBox1.isSelected());
             bh.setBoardType(jComboBox1.getSelectedIndex());
 
+            //Lets DRAW!!!
             bh.drawBoard();
         } catch (BackendHandlerException ex) {
+            //WHAT A LOVELY DAY!
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            jButton2.setEnabled(false);
+            JOptionPane.showMessageDialog(null, ex.toString());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -192,16 +222,15 @@ public class GUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
-        file = chooser.getSelectedFile();
-        String fileName = file.getAbsolutePath();
-        if (!fileName.substring(fileName.length() - 4).equals(".xml")) {
-            JOptionPane.showMessageDialog(null, "This is not a xml file, please choose correct file.");
+        
+        if(chooser.getSelectedFile() == null) {
             jButton2.setEnabled(false);
         } else {
+            file = chooser.getSelectedFile();
+            String fileName = file.getAbsolutePath();
             jButton2.setEnabled(true);
+            xmlConfigFile.setText(fileName);
         }
-        xmlConfigFile.setText(fileName);
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void saveToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToActionPerformed

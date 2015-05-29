@@ -28,21 +28,11 @@ public class Main {
     static File fileComplete;
 
     public static void main(String[] args) {
-
-        if ((args.length != 0 && args[0].equals("-h")) || args.length == 0) {
-            System.out.println("----------MANUAL---------");
-            System.out.println("-g for graphical GUI \n"
-                    + "else \n"
-                    + "Arguments that have to be used :\n"
-                    + "-i=<path> : filepath to XML configuration file\n"
-                    + "-o=<path> : filepath to output file\n"
-                    + "-s : to show output file -optional\n"
-                    + "One of the following arguments for wanted desk type: \n"
-                    + "-d=beaglebone or raspberry or cubieboard: for Beaglebone Black, Raspberry Pi B+, or CubieBoard 2\n"
-            );
-
+        
+        if ((args.length == 1 && (args[0].equals("-h") || args[0].equals("-help")))) {
+            writeManual();
         } else {
-            if (args.length == 1 && args[0].equals("-g")) {
+            if (args.length == 0) {
                 GUI gui = new GUI();
                 gui.run();
             } else {
@@ -51,11 +41,11 @@ public class Main {
                 String pathXml = new String();
                 String pathOut = new String();
                 boolean showOut = false;
-                String typeOut = new String();
                 String deskType = new String();
 
                 if (args.length < 3 || args.length > 4) {
-                    System.err.println("Some arguments are missing, type -h for help");
+                    System.err.println("Some arguments are missing.");
+                    writeManual();
                     return;
                 }
 
@@ -75,12 +65,14 @@ public class Main {
                 }
 
                 if (pathXml.length() == 0 || deskType.length() == 0 || pathOut.length() == 0) {
-                    System.err.println("Incomplete or wrong arguments, type -h for help.");
+                    System.err.println("Incomplete or wrong arguments");
+                    writeManual();
                     return;
                 }
 
                 if (!(deskType.equals("beaglebone") || deskType.equals("raspberry") || deskType.equals("cubieboard"))) {
-                    System.err.println("Incomplete or wrong arguments, type -h for help.");
+                    System.err.println("Incomplete or wrong arguments.");
+                    writeManual();
                     return;
                 }
                 
@@ -128,5 +120,18 @@ public class Main {
             case "cubieboard" : return Constants.CUBIEBOARD_BOARD;
             default : throw new IllegalArgumentException("unknown name of the board");
         }
+    }
+    
+    private static void writeManual() {
+        System.out.println("----------MANUAL---------");
+        System.out.println(/*"-g for graphical GUI \n"
+                + "else \n"
+                +*/ "Arguments that have to be used :\n"
+                + "-i=<path> : filepath to XML configuration file\n"
+                + "-o=<path> : filepath to output file\n"
+                + "-s : to show output file -optional\n"
+                + "One of the following arguments for wanted desk type: \n"
+                + "-d=beaglebone or raspberry or cubieboard: for Beaglebone Black, Raspberry Pi B+, or CubieBoard 2\n"
+        );
     }
 }
