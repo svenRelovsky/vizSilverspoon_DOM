@@ -816,15 +816,15 @@ public class PathCreator {
                 g = doc.createElement("line");
                 g.setAttribute("x1", String.valueOf(xCoord));
                 g.setAttribute("y1", "25");
-                g.setAttribute("x2", "27");
+                g.setAttribute("x2", "30");
                 g.setAttribute("y2", "25");
                 g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
                 group.appendChild(g);
 
                 g = doc.createElement("line");
-                g.setAttribute("x1", "27");
+                g.setAttribute("x1", "30");
                 g.setAttribute("y1", "25");
-                g.setAttribute("x2", "27");
+                g.setAttribute("x2", "30");
                 g.setAttribute("y2", "50");
                 g.setAttribute("style", "stroke:rgb(255,0,0);stroke-width:1");
                 group.appendChild(g);
