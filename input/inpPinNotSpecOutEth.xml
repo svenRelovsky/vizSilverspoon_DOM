@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- V tomto subore nieje specifikovany vstupny pin vystup je na ethernet -->
 <!-- Input pin is not specified in this file, output is ethernet -->
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:camel="http://camel.apache.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans" >
+<beans>
 
   <bean id="webCamBean" class="org.jboss.qa.camel.WebCamBean">
 
@@ -13,13 +13,15 @@
 
   </bean>
 
-  <camelContext trace="false" xmlns="http://camel.apache.org/schema/spring">
+  <camelContext trace="false">
 
     <route customId="true" id="iot-door-bell-route">
 
       <from uri="gpio://ph7?value=HIGH" />
 
       <to uri="bean:webCamBean?method=getPicture" />
+      
+      <to uri="http:hostName[:8080][/resourceUri]" />
 
       <to uri="mqtt://iot-demo?host=tcp://localhost:1883&amp;publishTopicName=IotDemo"/>
 
