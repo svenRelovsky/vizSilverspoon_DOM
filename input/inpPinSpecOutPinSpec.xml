@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:camel="http://camel.apache.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans" >
+<beans>
 
   <bean id="webCamBean" class="org.jboss.qa.camel.WebCamBean">
 
@@ -12,7 +12,7 @@
 
   </bean>
 
-  <camelContext trace="false" xmlns="http://camel.apache.org/schema/spring">
+  <camelContext trace="false">
 
     <route customId="true" id="iot-door-bell-route">
 

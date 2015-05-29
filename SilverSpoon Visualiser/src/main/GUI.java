@@ -22,9 +22,14 @@ public class GUI extends javax.swing.JFrame {
         model[1] = "BeagleBoneBlack";
         model[2] = "CubieBoard 2";
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(model));
+<<<<<<< HEAD
         
         //xmlConfigFile.setText(System.getProperty("user.dir"));
         saveTo.setText(System.getProperty("user.dir"));
+=======
+        jButton2.setEnabled(false);
+        saveTo.setText(System.getProperty("user.dir").toString());
+>>>>>>> origin/master
     }
 
     /**
@@ -138,7 +143,11 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+>>>>>>> origin/master
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(xmlConfigFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
@@ -148,11 +157,15 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(saveTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
+<<<<<<< HEAD
                 .addGap(18, 18, 18)
+=======
+                .addGap(38, 38, 38)
+>>>>>>> origin/master
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jCheckBox1))
@@ -170,12 +183,51 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_xmlConfigFileActionPerformed
 
+<<<<<<< HEAD
+=======
+    private String readFile(String fileName) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null) {
+                sb.append(line);
+                sb.append("\n");
+                line = br.readLine();
+            }
+            return sb.toString();
+        } finally {
+            br.close();
+        }
+    }
+
+    public static final String header = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+            + "<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n"
+            + "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">";
+    public static final String header2 = "<?xml version='1.0' encoding='UTF-8' standalone='no'?>\n"
+            + "<!-- Created with Fritzing (http://www.fritzing.org/) -->";
+
+    private File fileComplete;
+    private String content = new String();
+
+    private void saveFile(String fileName) throws IOException {
+        fileComplete = new File(fileName);
+        PrintWriter writer = new PrintWriter(fileComplete.getAbsolutePath(), "UTF-8");
+
+            writer.println(content
+                    + "</svg>");
+
+        writer.close();
+    }
+>>>>>>> origin/master
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         BackendHandler bh = new BackendHandler();
         
         try {
+<<<<<<< HEAD
             bh.setInputXMLPath(xmlConfigFile.getText());
             bh.setOutputDirPath(saveTo.getText());
             bh.setShowOut(jCheckBox1.isSelected());
@@ -184,6 +236,93 @@ public class GUI extends javax.swing.JFrame {
             bh.drawBoard();
         } catch (BackendHandlerException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+=======
+            int index = jComboBox1.getSelectedIndex();
+            XMLHandler xmlh = new XMLHandler();
+            Document doc = XMLHandler.loadNewXML(xmlConfigFile.getText());
+            
+            switch (index) {
+
+                case 0: {
+
+                    try {
+                        pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
+                        pc.run(saveTo.getText()+"/out.svg", index);
+//                        InputStream in
+//                                = getClass().getResourceAsStream("/incompleteDesks/beagleboneblack.txt");
+//                        content = convertStreamToString(in);
+//                        //content = readFile(System.getProperty("user.dir") + "/incompleteSvgs/beagleboneblack.svg");
+//                        if (jComboBox2.getSelectedIndex() == 0) {
+//                            saveFile(saveTo.getText() + "/beagleboneblack_full.svg");
+//                        } else {
+//                            saveFile(saveTo.getText() + "/beagleboneblack_full.html");
+//                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+                case 1: {
+                    try {
+                        pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
+                        pc.run(saveTo.getText()+"/out.svg", index);
+//                        InputStream in
+//                                = getClass().getResourceAsStream("/incompleteDesks/raspberry_pi_b+_breadboard.txt");
+//                        content = convertStreamToString(in);
+//                        //content = readFile(System.getProperty("user.dir") + "/incompleteSvgs/raspberry_pi_b+_breadboard.svg");
+//                        if (jComboBox2.getSelectedIndex() == 0) {
+//                            saveFile(saveTo.getText() + "/raspberry_pi_b+_breadboard_full.svg");
+//                        } else {
+//                            saveFile(saveTo.getText() + "/raspberry_pi_b+_breadboard_full.html");
+//                        }
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+                    } catch (XMLHandlerException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+                case 2: {
+                    try {
+                        pathCreator pc = new pathCreator(xmlh.parseRoute(doc));
+                        pc.run(saveTo.getText()+"/out.svg", index);
+//                        InputStream in
+//                                = getClass().getResourceAsStream("/incompleteDesks/CubieBoard2.txt");
+//                        content = convertStreamToString(in);
+//                        //content = readFile(System.getProperty("user.dir") + "/incompleteSvgs/CubieBoard2.svg");
+//                        if (jComboBox2.getSelectedIndex() == 0) {
+//                            saveFile(saveTo.getText() + "/CubieBoard2_full.svg");
+//                        } else {
+//                            saveFile(saveTo.getText() + "/CubieBoard2_full.html");
+//                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+            }
+
+            if (jCheckBox1.isSelected()) {
+                Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+                if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+                    try {
+                        URI uri = new URI("file://" + replaceWhiteSpaces(saveTo.getText()+"/out.svg"));
+                        desktop.browse(uri);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        } catch (XMLHandlerException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> origin/master
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

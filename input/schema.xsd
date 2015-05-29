@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+    <xs:element name="beans" type="beansType"></xs:element>
+
+	<xs:complexType name="beansType">
+			<xs:sequence>
+				<xs:element name="bean" type="beanType"/>
+				<xs:element name="camelContext" type="cCType"/>
+			</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="beanType">
+		<xs:sequence>
+			<xs:element name="property" type="propType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="class" type="xs:string"/>
+	</xs:complexType>
+
+	<xs:complexType name="propType">
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="value" type="xs:string"/>
+	</xs:complexType>
+	
+	<xs:complexType name="cCType">
+		<xs:sequence>
+			<xs:element name="route" type="routeType"/>
+		</xs:sequence>
+		<xs:attribute name="trace" type="traceType"/>
+		<!--<attribute name="xmlns" type="string"/>-->
+	</xs:complexType>
+	
+	<xs:simpleType name="traceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="false"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="routeType">
+		<xs:sequence>
+			<xs:element name="from" type="compType"/>
+			<xs:element name="to" type="compType" minOccurs="1" maxOccurs="14"/>
+		</xs:sequence>
+		<xs:attribute name="customId" type="traceType"/>
+		<xs:attribute name="id" type="xs:string"/>
+	</xs:complexType>
+	
+	<xs:complexType name="compType">
+		<xs:attribute name="uri" type="specialStringType"/>
+	</xs:complexType>
+
+	<xs:simpleType name="specialStringType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[\S]+[:].+"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
