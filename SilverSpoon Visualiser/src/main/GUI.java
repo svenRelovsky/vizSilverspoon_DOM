@@ -209,7 +209,7 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_xmlConfigFileActionPerformed
 
-    private String readFile(String fileName) throws IOException {
+    /*private String readFile(String fileName) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         try {
             StringBuilder sb = new StringBuilder();
@@ -224,7 +224,7 @@ public class GUI extends javax.swing.JFrame {
         } finally {
             br.close();
         }
-    }
+    }*/
 
     public static final String header = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
             + "<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n"
@@ -235,7 +235,7 @@ public class GUI extends javax.swing.JFrame {
     private File fileComplete;
     private String content = new String();
 
-    private void saveFile(String fileName) throws IOException {
+    /*private void saveFile(String fileName) throws IOException {
         fileComplete = new File(fileName);
         PrintWriter writer = new PrintWriter(fileComplete.getAbsolutePath(), "UTF-8");
         if (jComboBox2.getSelectedIndex() == 0) {
@@ -247,10 +247,26 @@ public class GUI extends javax.swing.JFrame {
 
         }
         writer.close();
-    }
+    }*/
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        BackendHandler bh = new BackendHandler();
+        
         try {
+            bh.setInputXMLPath(xmlConfigFile.getText());
+            bh.setOutputDirPath(saveTo.getText());
+            bh.setShowOut(jCheckBox1.isSelected());
+            bh.setBoardType(jComboBox1.getSelectedIndex());
+            bh.setOutputType(jComboBox2.getSelectedIndex());
+
+            bh.drawBoard();
+        } catch (BackendHandlerException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        /*try {
             int index = jComboBox1.getSelectedIndex();
             //XMLHandler xmlh = new XMLHandler();
             Document doc = XMLHandler.loadNewXML(xmlConfigFile.getText());
@@ -336,22 +352,34 @@ public class GUI extends javax.swing.JFrame {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private String convertStreamToString(java.io.InputStream is) {
+    /*private String convertStreamToString(java.io.InputStream is) {
         java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
 
     private String replaceWhiteSpaces(String path) {
         return path.replaceAll("\\s+", "%20");
-    }
+    }*/
 
     private File file;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        file = chooser.getSelectedFile();
+        String fileName = file.getAbsolutePath();
+        if (!fileName.substring(fileName.length() - 4).equals(".xml")) {
+            JOptionPane.showMessageDialog(null, "This is not a xml file, please choose correct file.");
+            jButton2.setEnabled(false);
+        } else {
+            jButton2.setEnabled(true);
+        }
+        xmlConfigFile.setText(fileName);
+        
+        /*JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         file = chooser.getSelectedFile();
         String fileName = file.getAbsolutePath();
@@ -361,7 +389,7 @@ public class GUI extends javax.swing.JFrame {
         } else {
             jButton2.setEnabled(true);
         }
-        xmlConfigFile.setText(fileName);
+        xmlConfigFile.setText(fileName);*/
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

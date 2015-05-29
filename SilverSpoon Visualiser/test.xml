@@ -20,8 +20,6 @@
       <to uri="bean:webCamBean?method=getPicture" />
       <to uri="bean:webCamBean?method=getPicture" />
       <to uri="bean:webCamBean?method=getPicture" />
-      <to uri="bean:webCamBean?method=getPicture" />
-      <to uri="bean:webCamBean?method=getPicture" />
       <to uri="mqtt://iot-demo?host=tcp://localhost:1883&amp;publishTopicName=IotDemo"/>
     </route>
   </camelContext>

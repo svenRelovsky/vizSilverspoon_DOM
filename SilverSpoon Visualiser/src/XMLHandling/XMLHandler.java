@@ -8,6 +8,7 @@ package XMLHandling;
 
 import java.net.URI;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
@@ -37,7 +38,7 @@ import org.xml.sax.SAXException;
 public class XMLHandler {
 
     /**
-     * Load XML file into DOM Document object.
+     * Loads XML file into DOM Document object.
      * @param inXmlPath path to XML file
      * @return DOM Document object
      * @throws XMLHandlerException error when parsing or opening file 
@@ -58,6 +59,29 @@ public class XMLHandler {
         return xml;
     }
     
+    /**
+     * Loads InputStream into DOM Document object. Caller is responsible for 
+     * closing InputStream!!!
+     * @param is InputStream
+     * @return DOM Document object
+     * @throws XMLHandlerException error when parsing or opening file 
+     */
+    public static Document loadNewXML (InputStream is) throws XMLHandlerException {
+        if(is == null) throw new XMLHandlerException("argument can't be null");
+        
+        Document xml;
+        
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            xml = builder.parse(is);
+        } catch (SAXException | ParserConfigurationException | IOException e) {
+            throw new XMLHandlerException(e.toString());
+        }
+        
+        return xml;
+    }
+    
 
     /**
      * Saves given DOM object into XML file.
@@ -70,14 +94,11 @@ public class XMLHandler {
         if(xml == null) throw new XMLHandlerException("xml object is null");
         
         try{
-            URI output = new URI(outXmlPath);
             TransformerFactory factory = TransformerFactory.newInstance();
             Transformer transformer = factory.newTransformer();
             DOMSource source = new DOMSource(xml);
             StreamResult result = new StreamResult(outXmlPath);
             transformer.transform(source, result);   
-        } catch (URISyntaxException e) {
-            throw new XMLHandlerException(e.toString());
         } catch (TransformerConfigurationException e) {
             throw new XMLHandlerException(e.toString());
         } catch (TransformerException e) {
