@@ -222,7 +222,6 @@ public class PathCreator {
                 fontSize = 5;
                 xSizeOfRect = 16;
                 ySizeOfRect = 10;
-                //move to text by:= x+3 y+7
                 
                 xSizeOfSpace = (110-(maxCount*xSizeOfRect))/(maxCount+1);
                 
@@ -239,7 +238,7 @@ public class PathCreator {
                  path.setAttribute("d", "M "+30+", "+50+
                                 " L "+30+ " "+((currPos.y+50)/2)+
                                 " L " +currPos.x+ " " + ((currPos.y+50)/2)+
-                                " L " +currPos.x+ " " + (currPos.y)
+                                " L " +currPos.x+ " " + (currPos.y-3)
         
                     );      
                  currPos.y+=ySizeOfRect/2;
@@ -248,7 +247,7 @@ public class PathCreator {
         
                 path.setAttribute("fill", "none");
                 path.setAttribute("marker-end", "url(#knob)");
-                
+                path.setAttribute("marker-start", "url(#knob)");
                 
                 group.appendChild(rect);
                 group.appendChild(path);
@@ -339,6 +338,7 @@ public class PathCreator {
                 path.setAttribute("fill", "none");
                 path.setAttribute("marker-end", "url(#knob)");
                 
+                path.setAttribute("marker-start", "url(#knob)");
                 
                 
                 
@@ -452,7 +452,13 @@ public class PathCreator {
         
         return group; //not implemented yet
     }
-    
+    /**
+     * 
+     * @param group
+     * @param from
+     * @param to
+     * @return element which creates path between lines 
+     */
     private Element printConnectingArrow(Element group, Point from, Point to){
          
         int space = (to.y-from.y)/2;
@@ -463,7 +469,7 @@ public class PathCreator {
         path.setAttribute("d", "M "+from.x+", "+from.y+
                                 " L "+from.x+ " "+(from.y+ySizeOfSpace/2)+
                                 " L " +to.x+ " " + (from.y+ySizeOfSpace/2)+
-                                " L " +to.x+ " " + (to.y-scale*3)
+                                " L " +to.x+ " " + (to.y-scale*2)
         
         );
         if(scale == 1) scale = 0;
@@ -485,6 +491,26 @@ public class PathCreator {
         return group;
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     private Element toEthernetPath(Element group, int model) {
         Element g0;
