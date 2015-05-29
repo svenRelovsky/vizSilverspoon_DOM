@@ -491,20 +491,13 @@ public class PathCreator {
         switch (model) {
             case Constants.RASPBERRY_PI_BOARD:
                 g0 = doc.createElement("line");
-                g0.setAttribute("x1", String.valueOf(currPos.x+1));
+                g0.setAttribute("x1", String.valueOf(currPos.x+1)); 
                 g0.setAttribute("y1", String.valueOf(currPos.y));
                 g0.setAttribute("x2", String.valueOf(currPos.x+1));
-                g0.setAttribute("y2", "80");
-                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
-                group.appendChild(g0);
-                
-                g0 = doc.createElement("line");
-                g0.setAttribute("x1", String.valueOf(currPos.x + 1));
-                g0.setAttribute("y1", "80");
-                g0.setAttribute("x2", String.valueOf(currPos.x + 1));
                 g0.setAttribute("y2", "130");
                 g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                 group.appendChild(g0);
+                
                 
                 g0 = doc.createElement("line");
                 g0.setAttribute("x1", String.valueOf(currPos.x + 1));
@@ -519,17 +512,10 @@ public class PathCreator {
                 g0.setAttribute("x1", String.valueOf(currPos.x + 1));
                 g0.setAttribute("y1", String.valueOf(currPos.y));
                 g0.setAttribute("x2", String.valueOf(currPos.x + 1));
-                g0.setAttribute("y2", "80");
-                g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
-                group.appendChild(g0);
-                
-                g0 = doc.createElement("line");
-                g0.setAttribute("x1", String.valueOf(currPos.x + 1));
-                g0.setAttribute("y1", "80");
-                g0.setAttribute("x2", String.valueOf(currPos.x + 1));
                 g0.setAttribute("y2", "110");
                 g0.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                 group.appendChild(g0);
+                
                 
                 g0 = doc.createElement("line");
                 g0.setAttribute("x1", String.valueOf(currPos.x + 1));
@@ -631,17 +617,10 @@ public class PathCreator {
                     g.setAttribute("x1", String.valueOf(currPos.x + 1));
                     g.setAttribute("y1", String.valueOf(currPos.y));
                     g.setAttribute("x2", String.valueOf(currPos.x + 1));
-                    g.setAttribute("y2", "80");
-                    g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
-                    group.appendChild(g);
-                    
-                    g = doc.createElement("line");
-                    g.setAttribute("x1", String.valueOf(currPos.x + 1));
-                    g.setAttribute("y1", "80");
-                    g.setAttribute("x2", String.valueOf(currPos.x + 1));
                     g.setAttribute("y2", "24");
                     g.setAttribute("style", "stroke:rgb(0,0,255);stroke-width:1");
                     group.appendChild(g);
+                   
                     
                     g = doc.createElement("line");
                     g.setAttribute("x1", String.valueOf(currPos.x + 1));
