@@ -55,7 +55,22 @@ link:./prezentacia.html#(3)[späť]
 
 Vykreslovanie komponent zapojenia
 ---------------------------------
+Postup:
+ 
+* Vykreslenie šípky zo vstupného bodu stretu +
+
+* Určený počet na riadok +
+
+* vykreslenie obldžníka na ktorý bude možné vykreslovať +
+
+* nastavenie parametrov v závislosti od typu dosky +
+
+* Postupné vykreslovanie riadkov a ich prepájanie medzi sebou +
+ 
+* Vykreslenie šípky na výstupný bod stretu +
  +
+image:path.svg[width=800] +
+ 
 link:./prezentacia.html#(3)[späť]
 
 
