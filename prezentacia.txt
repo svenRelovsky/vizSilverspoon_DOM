@@ -82,7 +82,7 @@ Command-line interface (CLI) +
     Specifies board to be used. You can choose from: beaglebone (Beaglebone Black) or raspberry (Raspberry Pi B+) or cubieboard (CubieBoard 2)
 
 
-Prepojenie častí programu a testovacie skripty pre automatizovateľné testy. +
+Testovacie skripty pre automatizovateľné testy. +
 [role="outline"]
 link:./prezentacia.html#(3)[späť]
 
