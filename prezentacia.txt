@@ -2,8 +2,11 @@ Prezentacia k XML
 =================
 :copyright: MUni
 :backend:   slidy
-:max-width: 45em
-Silverspoon Camel Routes Vizualizace
+:max-width: 50em
+:duration: 12
+Vizualizace pro Silverspon.io pomocí Java DOM
+//Cílem práce je vizualizovat Apache Camel routes pomocí SVG. K tomu bude využito Java DOM API. Obecné prvky zadání dané vizualizace jsou dostupné na tomto docs.google.com/document/d/1VYe_K9NvOXHtS-R-9H3xywKGm6uvraHk8RWuXHH7qSQ/pub[odkazu]
+
 
 Prezentacia k XML
 -----------------
@@ -14,7 +17,60 @@ Marek Burda +
 Matej Šípka +
 Sven Relovský
 
-Obrazok
--------
-image:beagleboneblack.svg[width=960]
 
+Obsah
+-----
+* Parsovanie vstupu +
+_Ľubomír Obrátil_  [link:./prezentacia.html#(4)[link]] +
+ +
+* Cesta z pinu a do pinu/ethernetu + testovacie súbory +
+_Marek Burda_  [link:./prezentacia.html#(5)[link]] +
+ +
+* Vykreslovanie komponent zapojenia +
+_Sven Relovský_  [link:./prezentacia.html#(6)[link]] +
+ +
+* Uzivatelske rozhranie a prepojenie +
+_Matej Šípka_  [link:./prezentacia.html#(7)[link]]
+
+
+
+Parsovanie vstupu
+-----------------
+Načítanie vstupného súboru +
+Vyparsovanie komponent a vstupnovýstupného pinu +
+Dokumentácia +
+----
+<from uri="gpio://P8_27?value=HIGH"/>
+<to uri="mqtt://iot-demo?host=tcp://localhost:1883&publishTopicName=IotDemo"/>
+----
+link:./prezentacia.html#na[späť]
+
+
+Cesta z pinu a do pinu/ethernetu
+--------------------------------
+Výpočet polohy vstupného a výstupého pinu +
+Vykreslenie cesty od vstupu/k výstupu +
+link:./prezentacia.html#(3)[späť]
+
+
+Vykreslovanie komponent zapojenia
+---------------------------------
+ +
+link:./prezentacia.html#(3)[späť]
+
+
+
+Uživateľské rozhranie a prepojenie
+----------------------------------
+Zabezpečenie SVG dosiek +
+Teoretická znalosť +
+Návrh a príprava GUI a CLI +
+[role="incremental"]
+image:gui-new.png[] +
+[role="outline"]
+link:./prezentacia.html#(3)[späť]
+
+
+Linkpage
+--------
+link:./prezentacia.html#(2)[link]
