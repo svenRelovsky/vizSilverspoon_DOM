@@ -63,10 +63,26 @@ link:./prezentacia.html#(3)[späť]
 Uživateľské rozhranie a prepojenie
 ----------------------------------
 Zabezpečenie SVG dosiek +
-Teoretická znalosť +
+- Beaglebone Black a Raspberry Pi B+ - prevzaté z fritzing.org +
+- CubieBoard 2 - ručné spracovanie pomocou LibreOffice DRAW +
+
 Návrh a príprava GUI a CLI +
 [role="incremental"]
 image:gui-new.png[] +
+
+Command-line interface (CLI) +
+
+    -i=<path> (mandatory)
+    Absolute or relative path to input XML file.
+    -o=<path> (mandatory)
+    Absolute or relative path to output directory.
+    -s (optional)
+    Option to open output file, just after render phase is completed.
+    -d=<desk_type> (mandatory)
+    Specifies board to be used. You can choose from: beaglebone (Beaglebone Black) or raspberry (Raspberry Pi B+) or cubieboard (CubieBoard 2)
+
+
+Prepojenie častí programu a testovacie skripty pre automatizovateľné testy. +
 [role="outline"]
 link:./prezentacia.html#(3)[späť]
 
