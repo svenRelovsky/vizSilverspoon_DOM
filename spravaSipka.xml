@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>Vizualizace pro Silverspon.io záverečná správa</title>
+    <author>
+        <firstname>Matej</firstname>
+        <surname>Šípka</surname>
+    </author>
+    <authorinitials>MŠ</authorinitials>
+</articleinfo>
+<section id="_vizualizace_pro_silverspon_io">
+<title>Vizualizace pro Silverspon.io</title>
+<simpara>Správa:</simpara>
+<simpara>Na projekte som pracoval na GUI, CLI, spravoval som samotné dosky ako podklad a vytváral skripty pre automatizované testovanie aplikácie cez CLI.
+GUI je pre užívateľa intuitívne. CLI má na wiki githubu presne špecifikované argumenty, s ktorými sa spúšťa.
+Zabezpečil som, aby bola aplikácia odolná voči nesprávnym vstupom a aby sa minimalizovala možnosť jej pádu užívateľovou vinou.
+Dosky BeagleBone Black a Raspberry PI B+ som prevzal z aplikácie fritzing.
+Dosku CubieBoard som vytvoril ručne za použitia LibreOffice DRAW, pretože nebola dostupná v aplikácií fritzing ani voľne na internete.
+Testovacie skripty generovali sadu dosiek, ktoré som následne vizuálne porovnal na základe konfiguračného XML súboru.</simpara>
+</section>
+</article>
