@@ -1,5 +1,5 @@
-Prezentacia k XML
-=================
+Vizualizace pro Silverspon.io
+=============================
 :copyright: MUni
 :backend:   slidy
 :max-width: 50em
@@ -8,8 +8,9 @@ Vizualizace pro Silverspon.io pomocí Java DOM
 //Cílem práce je vizualizovat Apache Camel routes pomocí SVG. K tomu bude využito Java DOM API. Obecné prvky zadání dané vizualizace jsou dostupné na tomto docs.google.com/document/d/1VYe_K9NvOXHtS-R-9H3xywKGm6uvraHk8RWuXHH7qSQ/pub[odkazu]
 
 
-Prezentacia k XML
------------------
+
+Vizualizace pro Silverspon.io
+-----------------------------
 Na projekte pracovali: + 
  +
 Marek Burda + 
@@ -17,6 +18,7 @@ Marek Burda +
 Matej Šípka +
 Sven Relovský
 
+Prezentácia bola vytvorená za účelom obhajoby projektu, vrámci predmetu PB138.
 
 Obsah
 -----
