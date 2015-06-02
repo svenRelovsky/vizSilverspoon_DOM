@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>Vizualizace pro Silverspon.io</title>
+    <author>
+        <firstname>Sven</firstname>
+        <surname>Relovský</surname>
+    </author>
+    <authorinitials>SR</authorinitials>
+</articleinfo>
+<itemizedlist>
+<listitem>
+<simpara>
+Oficiálne zadanie<?asciidoc-br?>
+Cílem práce je vizualizovat Apache Camel routes pomocí SVG. K tomu bude využito Java DOM API.<?asciidoc-br?>
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Na projekte pracovali:<?asciidoc-br?>
+<?asciidoc-br?>
+Marek Burda<?asciidoc-br?>
+Ľubomír Obrátil<?asciidoc-br?>
+Matej Šípka<?asciidoc-br?>
+Sven Relovský</simpara>
+<section id="_vykreslovanie_komponent_zapojenia">
+<title>Vykreslovanie komponent zapojenia</title>
+<simpara>Postup:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Vykreslenie šípky zo vstupného bodu stretu<?asciidoc-br?>
+Zo vstupného bodu stretu je vykreslená cesta vedúca k prvej komponente,  jej poloha je vypočítaná v závislosti od použitej dosky, počtu parametrov na riadok a polohy prvého elementu riadku.+
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Určený počet na riadok<?asciidoc-br?>
+Maximálny počet elementov na riadok je vypočítaný pomocou algoritmu, ktorý vracia hodnoty 3,4 alebo 5, tak aby nedochádzalo k osirotelým komponentám na novom riadku, v našom projekte počítame s maximálnym počtom 15 komponent, avšak tento algoritmus dokáže pracovať aj s vačšími hodnotami.
+Uvediem hodnoty algoritmu pre náš projekt:<?asciidoc-br?>
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+1 komponenta celkovo - 1 komponenta na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+2 komponenty celkovo - 2 komponenty na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+3 komponenty celkovo - 3 komponenty na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+4 komponenty celkovo - 4 komponenty na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+5 komponent celkovo - 5 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+6 komponent celkovo - 3 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+7 komponent celkovo - 4 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+8 komponent celkovo - 4 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+9 komponent celkovo - 5 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+10 komponent celkovo - 5 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+11 komponent celkovo - 4 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+12 komponent celkovo - 4 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+13 komponent celkovo - 5 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+14 komponent celkovo - 5 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+15 komponent celkovo - 5 komponent na riadok<?asciidoc-br?>
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>
+vykreslenie obldžníka na ktorý bude možné vykreslovať<?asciidoc-br?>
+Kedže dosky často obsahujú rušivé elementy, vykreslenie komponent priamo na dosku by bolo neprehľadné. Z tejto príčiny vykreslím na dosku vhodný obdlžník, s nastavenou priesvitnosťou 0.75 (aby bolo možné vykresliť elementy a zároveň zachováva čiastočnú predstavu o pozadí za týmto obdlžníkom)<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+nastavenie parametrov v závislosti od typu dosky<?asciidoc-br?>
+Vzhľad týchto dosiek je jedinečný a preto nieje možné stanoviť pomer podobnosti ich parametrov. Parametre ktoré nastavím priamo sú napríklad: šírka malého štvorca = jednej komponenty, scale = parameter pre priblíženie veľkostí<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Postupné vykreslovanie riadkov a ich prepájanie medzi sebou<?asciidoc-br?>
+ Podľa počtu sú vykreslené elementy na riadok a prepojene cestou "path"<?asciidoc-br?>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Vykreslenie šípky na výstupný bod stretu<?asciidoc-br?>
+ šípka je vykreslená na y-ovej osi v danom riadku a vedie k x-ovej osi na výstupný bod stretu<?asciidoc-br?>
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</article>

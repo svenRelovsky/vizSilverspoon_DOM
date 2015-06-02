@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>PB138 - Final report</title>
+    <author>
+        <firstname>Ľubomír</firstname>
+        <surname>Obrátil</surname>
+    </author>
+    <authorinitials>ĽO</authorinitials>
+</articleinfo>
+<section id="_vizualizace_pro_silverspoon_io_pomocí_java_dom_api">
+<title>Vizualizace pro Silverspoon.io pomocí Java DOM API</title>
+<simpara>Mojou úlohou bola práca so vstupnými a výstupnými XML súbormi. K načítavaniu a ukladaniu týchto súborov som použil Java DOM API. Z načítaneho vstupného súboru sa potom vytvorila symbolická cesta komponentov. V závislosti na špecifikovaných pinoch vo vstupnom súbore bol nastavený aj prvý a posledný element cesty na hodnotu pinu. Ostatné elementy mali textovú hodnotu názvu elementu. Objekt cesty bol potom poskytnuty ďalšej časti aplikácie, ktorá sa stará o správne vykreslenie cesty na užívateľom špecifikovanu SVG dosku. Na konci programu sa pomocou môjho kódu tiež ukladala výsledná doska do súboru.<?asciidoc-br?></simpara>
+<simpara>Ďalej bolo mojou úlohou vytvoriť dokumentáciu k vzniknutej aplikácii. Dokumentácia v angličtine sa nachádza na GitHub wiki (<ulink url="https://github.com/svenRelovsky/vizSilverspoon_DOM/wiki">https://github.com/svenRelovsky/vizSilverspoon_DOM/wiki</ulink>). Wiki obsahuje popis práce s grafickým a konzolovým užívateľským rozhraním, postup vykreslovania dosiek a workflow aplikácie. Popis jednotlivých funkcií sa nachádza priamo v kóde.<?asciidoc-br?></simpara>
+<simpara>V závere vývoja aplikácie som spravil refaktor kódu (bez zmeny funkcionality), súčasťou čoho bolo prečistenie kódu od nepoužívaných funkcií, upravenie a upratanie jednotlivých časti implementácie tak aby boli jednoduchšie rozšíriteľné a presunutie ovladánia funkcionality z rozhraní do samostatnej triedy (odstránená duplicita kódu).<?asciidoc-br?></simpara>
+</section>
+</article>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>Zaverecna sprava</title>
+    <author>
+        <firstname>Marek</firstname>
+        <surname>Burda</surname>
+    </author>
+    <authorinitials>MB</authorinitials>
+</articleinfo>
+<section id="_popis_práce">
+<title>Popis práce</title>
+<simpara>Mojou prácou bolo vykreslovanie ciest a odovzdanie cesty na vykreslenie jednotlivých komponentov. Pracoval som s parsovanou informáciou zo vstupného XML súboru a musel som zistiť, či mám informáciu o konkrétnom pine alebo len
+o sústave, v ktorej sa vstupný pin nachádza. Na jednoduchšie identifikovanie vstupného a výstupného pinu som sa rozhodol, že čiara indikujúca
+zapojenie vstupu bude znázornená červenou farbou, čiara ktorá indikuje výstup je znázornená modrou farbou.</simpara>
+<simpara>Výstup može smerovať k pinu alebo k ethernetu. Toto zistíme názvom posledného komponentu.<?asciidoc-br?>
+GPIO - výstup na pin<?asciidoc-br?>
+MQTT - výstup na ehernet<?asciidoc-br?>
+Cesta k pinu sa rovnako ako pri vstupe musí vypočítať, no keďže ethernet je na všetkých doskách pevne daný, cesta k nemu je pevne daná.</simpara>
+<simpara>Moja práca si vyžadovala najmä spoluprácu s vykreslovaním zapojením komponentov (Sven Relovský), keďže si predávame cestu. Predanie zo vstupu realizujeme
+na pevne danom bode, no poloha výstupu sa može meniť.</simpara>
+<simpara>Taktiež som vypracoval testovacie XML súbory a k nim príslušnú XSD schému. Keďže sme mali vopred dané vstupné súbory, schému som musel prisposobať aj týmto
+súborom.</simpara>
+</section>
+</article>
