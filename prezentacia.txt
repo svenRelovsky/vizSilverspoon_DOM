@@ -22,7 +22,7 @@ Prezentácia bola vytvorená za účelom obhajoby projektu, vrámci predmetu PB1
 
 Obsah
 -----
-* Parsovanie vstupu +
+* Práca s XML súbormi, dokumentácia, prepojenie rozhraní a funkcionality +
 _Ľubomír Obrátil_  [link:./prezentacia.html#(4)[link]] +
  +
 * Cesta z pinu a do pinu/ethernetu + testovacie súbory +
@@ -36,16 +36,32 @@ _Matej Šípka_  [link:./prezentacia.html#(7)[link]]
 
 
 
-Parsovanie vstupu
------------------
-Načítanie vstupného súboru +
-Vyparsovanie komponent a vstupnovýstupného pinu +
-Dokumentácia +
+Práca s XML súbormi, dokumentácia, prepojenie rozhraní a funkcionality
+----------------------------------------------------------------------
+* Načítanie XML súborov (vstupný súbor, SVG súbory dosiek) + 
+
+* Vytvorenie objektovej reprezentácie cesty (parsovanie I/O pinov a komponentov v ceste) + 
+
+* Finálny refaktor, presunutie funkcionality z rozhraní do samostatnej triedy +
+
+* Dokumentácia [link:https://github.com/svenRelovsky/vizSilverspoon_DOM/wiki[Github Wiki]] +
+
+
 ----
 <from uri="gpio://P8_27?value=HIGH"/>
-<to uri="mqtt://iot-demo?host=tcp://localhost:1883&publishTopicName=IotDemo"/>
 ----
-link:./prezentacia.html#na[späť]
+----
+<to uri="mvel:templateName"/>
+----
+----
+<to uri="mqtt://iot-demo?host=host"/>
+----
+----
+<to uri="gpio://P8?value=HIGH"/>
+----
+
+link:./prezentacia.html#(3)[späť] +
+
 
 
 Cesta z pinu a do pinu/ethernetu
@@ -106,4 +122,4 @@ link:./prezentacia.html#(3)[späť]
 
 Linkpage
 --------
-link:./prezentacia.html#(2)[link]
+link:./prezentacia.html#(3)[link]

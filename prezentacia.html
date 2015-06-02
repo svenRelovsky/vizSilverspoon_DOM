@@ -2,10 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Prezentacia k XML</title>
+<title>Vizualizace pro Silverspon.io</title>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="copyright" content="Copyright &#169; MUni" />
 <meta name="generator" content="AsciiDoc 8.6.9" />
+<meta name="duration" content="12" />
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -3832,28 +3833,182 @@ setTimeout(w3c_slidy.hide_slides, 50);
 /*]]>*/
 </script>
 </head>
-<body class="article" style="max-width:45em">
+<body class="article" style="max-width:50em">
 <div id="header" class="slide">
-<h1>Prezentacia k XML</h1>
-<span id="author">Silverspoon Camel Routes Vizualizace</span><br />
+<h1>Vizualizace pro Silverspon.io</h1>
+<span id="author">Vizualizace pro Silverspon.io pomocí Java DOM</span><br />
 </div>
 <div class="sect1 slide">
-<h1 id="_prezentacia_k_xml">Prezentacia k XML</h1>
-<div class="sectionbody" style="max-width:45em">
+<h1 id="_vizualizace_pro_silverspon_io">Vizualizace pro Silverspon.io</h1>
+<div class="sectionbody" style="max-width:50em">
 <div class="paragraph"><p>Na projekte pracovali:<br />
 <br />
 Marek Burda<br />
 Ľubomír Obrátil<br />
 Matej Šípka<br />
 Sven Relovský</p></div>
+<div class="paragraph"><p>Prezentácia bola vytvorená za účelom obhajoby projektu, vrámci predmetu PB138.</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_obrazok">Obrazok</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p><span class="image">
-<img src="beagleboneblack.svg" alt="beagleboneblack.svg" width="960" />
-</span></p></div>
+<h1 id="_obsah">Obsah</h1>
+<div class="sectionbody" style="max-width:50em">
+<ul class="">
+<li>
+<span>
+Práca s XML súbormi, dokumentácia, prepojenie rozhraní a funkcionality<br />
+<em>Ľubomír Obrátil</em>  [<a href="./prezentacia.html#(4)">link</a>]<br />
+<br />
+</span>
+</li>
+<li>
+<span>
+Cesta z pinu a do pinu/ethernetu + testovacie súbory<br />
+<em>Marek Burda</em>  [<a href="./prezentacia.html#(5)">link</a>]<br />
+<br />
+</span>
+</li>
+<li>
+<span>
+Vykreslovanie komponent zapojenia<br />
+<em>Sven Relovský</em>  [<a href="./prezentacia.html#(6)">link</a>]<br />
+<br />
+</span>
+</li>
+<li>
+<span>
+Uzivatelske rozhranie a prepojenie<br />
+<em>Matej Šípka</em>  [<a href="./prezentacia.html#(7)">link</a>]
+</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_práca_s_xml_súbormi_dokumentácia_prepojenie_rozhraní_a_funkcionality">Práca s XML súbormi, dokumentácia, prepojenie rozhraní a funkcionality</h1>
+<div class="sectionbody" style="max-width:50em">
+<ul class="">
+<li>
+<span>
+Načítanie XML súborov (vstupný súbor, SVG súbory dosiek)<br />
+</span>
+</li>
+<li>
+<span>
+Vytvorenie objektovej reprezentácie cesty (parsovanie I/O pinov a komponentov v ceste)<br />
+</span>
+</li>
+<li>
+<span>
+Finálny refaktor, presunutie funkcionality z rozhraní do samostatnej triedy<br />
+</span>
+</li>
+<li>
+<span>
+Dokumentácia [<a href="https://github.com/svenRelovsky/vizSilverspoon_DOM/wiki">Github Wiki</a>]<br />
+</span>
+</li>
+</ul>
+<div class="listingblock">
+<div class="content">
+<pre><code>&lt;from uri="gpio://P8_27?value=HIGH"/&gt;</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>&lt;to uri="mvel:templateName"/&gt;</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>&lt;to uri="mqtt://iot-demo?host=host"/&gt;</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>&lt;to uri="gpio://P8?value=HIGH"/&gt;</code></pre>
+</div></div>
+<div class="paragraph"><p><a href="./prezentacia.html#(3)">späť</a><br /></p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_cesta_z_pinu_a_do_pinu_ethernetu">Cesta z pinu a do pinu/ethernetu</h1>
+<div class="sectionbody" style="max-width:50em">
+<div class="paragraph"><p>Výpočet polohy vstupného a výstupého pinu<br />
+Vykreslenie cesty od vstupu/k výstupu<br />
+<a href="./prezentacia.html#(3)">späť</a></p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_vykreslovanie_komponent_zapojenia">Vykreslovanie komponent zapojenia</h1>
+<div class="sectionbody" style="max-width:50em">
+<div class="paragraph"><p>Postup:</p></div>
+<ul class="">
+<li>
+<span>
+Vykreslenie šípky zo vstupného bodu stretu<br />
+</span>
+</li>
+<li>
+<span>
+Určený počet na riadok<br />
+</span>
+</li>
+<li>
+<span>
+vykreslenie obldžníka na ktorý bude možné vykreslovať<br />
+</span>
+</li>
+<li>
+<span>
+nastavenie parametrov v závislosti od typu dosky<br />
+</span>
+</li>
+<li>
+<span>
+Postupné vykreslovanie riadkov a ich prepájanie medzi sebou<br />
+</span>
+</li>
+<li>
+<span>
+Vykreslenie šípky na výstupný bod stretu<br />
+<br />
+<span class="image">
+<img src="path.svg" alt="path.svg" width="800" />
+</span><br />
+</span>
+</li>
+</ul>
+<div class="paragraph"><p><a href="./prezentacia.html#(3)">späť</a></p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_uživateľské_rozhranie_a_prepojenie">Uživateľské rozhranie a prepojenie</h1>
+<div class="sectionbody" style="max-width:50em">
+<div class="paragraph"><p>Zabezpečenie SVG dosiek<br />
+- Beaglebone Black a Raspberry Pi B+ - prevzaté z fritzing.org<br />
+- CubieBoard 2 - ručné spracovanie pomocou LibreOffice DRAW<br /></p></div>
+<div class="paragraph"><p>Návrh a príprava GUI a CLI<br /></p></div>
+<div class="paragraph incremental"><p><span class="image">
+<img src="gui-new.png" alt="gui-new.png" />
+</span><br /></p></div>
+<div class="paragraph"><p>Command-line interface (CLI)<br /></p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>-i=&lt;path&gt; (mandatory)
+Absolute or relative path to input XML file.
+-o=&lt;path&gt; (mandatory)
+Absolute or relative path to output directory.
+-s (optional)
+Option to open output file, just after render phase is completed.
+-d=&lt;desk_type&gt; (mandatory)
+Specifies board to be used. You can choose from: beaglebone (Beaglebone Black) or raspberry (Raspberry Pi B+) or cubieboard (CubieBoard 2)</code></pre>
+</div></div>
+<div class="paragraph"><p>Testovacie skripty pre automatizovateľné testy.<br /></p></div>
+<div class="paragraph outline"><p><a href="./prezentacia.html#(3)">späť</a></p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_linkpage">Linkpage</h1>
+<div class="sectionbody" style="max-width:50em">
+<div class="paragraph"><p><a href="./prezentacia.html#(3)">link</a></p></div>
 </div>
 </div>
 </body>
