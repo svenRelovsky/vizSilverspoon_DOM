@@ -1,5 +1,5 @@
-Prezentacia k XML
-=================
+Vizualizace pro Silverspon.io
+=============================
 :copyright: MUni
 :backend:   slidy
 :max-width: 50em
@@ -8,8 +8,9 @@ Vizualizace pro Silverspon.io pomocí Java DOM
 //Cílem práce je vizualizovat Apache Camel routes pomocí SVG. K tomu bude využito Java DOM API. Obecné prvky zadání dané vizualizace jsou dostupné na tomto docs.google.com/document/d/1VYe_K9NvOXHtS-R-9H3xywKGm6uvraHk8RWuXHH7qSQ/pub[odkazu]
 
 
-Prezentacia k XML
------------------
+
+Vizualizace pro Silverspon.io
+-----------------------------
 Na projekte pracovali: + 
  +
 Marek Burda + 
@@ -17,6 +18,7 @@ Marek Burda +
 Matej Šípka +
 Sven Relovský
 
+Prezentácia bola vytvorená za účelom obhajoby projektu, vrámci predmetu PB138.
 
 Obsah
 -----
@@ -55,7 +57,22 @@ link:./prezentacia.html#(3)[späť]
 
 Vykreslovanie komponent zapojenia
 ---------------------------------
+Postup:
+ 
+* Vykreslenie šípky zo vstupného bodu stretu +
+
+* Určený počet na riadok +
+
+* vykreslenie obldžníka na ktorý bude možné vykreslovať +
+
+* nastavenie parametrov v závislosti od typu dosky +
+
+* Postupné vykreslovanie riadkov a ich prepájanie medzi sebou +
+ 
+* Vykreslenie šípky na výstupný bod stretu +
  +
+image:path.svg[width=800] +
+ 
 link:./prezentacia.html#(3)[späť]
 
 
@@ -63,10 +80,26 @@ link:./prezentacia.html#(3)[späť]
 Uživateľské rozhranie a prepojenie
 ----------------------------------
 Zabezpečenie SVG dosiek +
-Teoretická znalosť +
+- Beaglebone Black a Raspberry Pi B+ - prevzaté z fritzing.org +
+- CubieBoard 2 - ručné spracovanie pomocou LibreOffice DRAW +
+
 Návrh a príprava GUI a CLI +
 [role="incremental"]
 image:gui-new.png[] +
+
+Command-line interface (CLI) +
+
+    -i=<path> (mandatory)
+    Absolute or relative path to input XML file.
+    -o=<path> (mandatory)
+    Absolute or relative path to output directory.
+    -s (optional)
+    Option to open output file, just after render phase is completed.
+    -d=<desk_type> (mandatory)
+    Specifies board to be used. You can choose from: beaglebone (Beaglebone Black) or raspberry (Raspberry Pi B+) or cubieboard (CubieBoard 2)
+
+
+Testovacie skripty pre automatizovateľné testy. +
 [role="outline"]
 link:./prezentacia.html#(3)[späť]
 
