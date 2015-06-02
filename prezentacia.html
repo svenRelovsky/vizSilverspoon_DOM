@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="copyright" content="Copyright &#169; MUni" />
 <meta name="generator" content="AsciiDoc 8.6.9" />
+<meta name="duration" content="12" />
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -3832,14 +3833,14 @@ setTimeout(w3c_slidy.hide_slides, 50);
 /*]]>*/
 </script>
 </head>
-<body class="article" style="max-width:45em">
+<body class="article" style="max-width:50em">
 <div id="header" class="slide">
 <h1>Prezentacia k XML</h1>
-<span id="author">Silverspoon Camel Routes Vizualizace</span><br />
+<span id="author">Vizualizace pro Silverspon.io pomocí Java DOM</span><br />
 </div>
 <div class="sect1 slide">
 <h1 id="_prezentacia_k_xml">Prezentacia k XML</h1>
-<div class="sectionbody" style="max-width:45em">
+<div class="sectionbody" style="max-width:50em">
 <div class="paragraph"><p>Na projekte pracovali:<br />
 <br />
 Marek Burda<br />
@@ -3849,11 +3850,113 @@ Sven Relovský</p></div>
 </div>
 </div>
 <div class="sect1 slide">
-<h1 id="_obrazok">Obrazok</h1>
-<div class="sectionbody" style="max-width:45em">
-<div class="paragraph"><p><span class="image">
-<img src="beagleboneblack.svg" alt="beagleboneblack.svg" width="960" />
-</span></p></div>
+<h1 id="_obsah">Obsah</h1>
+<div class="sectionbody" style="max-width:50em">
+<ul class="">
+<li>
+<span>
+Praca so vstupnymi XML subormi, dokumentacia, prepojenie rozhrani s vykreslovanim<br />
+<em>Ľubomír Obrátil</em>  [<a href="./prezentacia.html#(4)">link</a>]<br />
+<br />
+</span>
+</li>
+<li>
+<span>
+Cesta z pinu a do pinu/ethernetu + testovacie súbory<br />
+<em>Marek Burda</em>  [<a href="./prezentacia.html#(5)">link</a>]<br />
+<br />
+</span>
+</li>
+<li>
+<span>
+Vykreslovanie komponent zapojenia<br />
+<em>Sven Relovský</em>  [<a href="./prezentacia.html#(6)">link</a>]<br />
+<br />
+</span>
+</li>
+<li>
+<span>
+Uzivatelske rozhranie a prepojenie<br />
+<em>Matej Šípka</em>  [<a href="./prezentacia.html#(7)">link</a>]
+</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_praca_so_vstupnymi_xml_subormi_dokumentacia_prepojenie_rozhrani_s_vykreslovanim">Praca so vstupnymi XML subormi, dokumentacia, prepojenie rozhrani s vykreslovanim</h1>
+<div class="sectionbody" style="max-width:50em">
+<ul class="">
+<li>
+<span>
+Načítanie XML suborov (vstupny subor, SVG subory dosiek)<br />
+</span>
+</li>
+<li>
+<span>
+Vyparsovanie cesty, komponent na nej a jej zaciatku a konca<br />
+</span>
+</li>
+</ul>
+<div class="listingblock">
+<div class="content">
+<pre><code>&lt;from uri="gpio://P8_27?value=HIGH"/&gt;
+&lt;to uri="mqtt://iot-demo?host=tcp://localhost:1883&amp;publishTopicName=IotDemo"/&gt;</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>&lt;from uri="gpio://P8_27?value=HIGH"/&gt;
+&lt;to uri="mqtt://iot-demo?host=tcp://localhost:1883&amp;publishTopicName=IotDemo"/&gt;</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>&lt;from uri="gpio://P8_27?value=HIGH"/&gt;
+&lt;to uri="mqtt://iot-demo?host=tcp://localhost:1883&amp;publishTopicName=IotDemo"/&gt;</code></pre>
+</div></div>
+<ul class="">
+<li>
+<span>
+Dokumentacia [GithubWiki:<a href="https://github.com/svenRelovsky/vizSilverspoon_DOM/wiki">link</a>]
+</span>
+</li>
+</ul>
+<div class="paragraph"><p><a href="./prezentacia.html#na">späť</a></p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_cesta_z_pinu_a_do_pinu_ethernetu">Cesta z pinu a do pinu/ethernetu</h1>
+<div class="sectionbody" style="max-width:50em">
+<div class="paragraph"><p>Výpočet polohy vstupného a výstupého pinu<br />
+Vykreslenie cesty od vstupu/k výstupu<br />
+<a href="./prezentacia.html#(3)">späť</a></p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_vykreslovanie_komponent_zapojenia">Vykreslovanie komponent zapojenia</h1>
+<div class="sectionbody" style="max-width:50em">
+<div class="listingblock">
+<div class="content">
+<pre><code> +
+link:./prezentacia.html#(3)[späť]</code></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_uživateľské_rozhranie_a_prepojenie">Uživateľské rozhranie a prepojenie</h1>
+<div class="sectionbody" style="max-width:50em">
+<div class="paragraph"><p>Zabezpečenie SVG dosiek<br />
+Teoretická znalosť<br />
+Návrh a príprava GUI a CLI<br /></p></div>
+<div class="paragraph incremental"><p><span class="image">
+<img src="gui-new.png" alt="gui-new.png" />
+</span><br /></p></div>
+<div class="paragraph outline"><p><a href="./prezentacia.html#(3)">späť</a></p></div>
+</div>
+</div>
+<div class="sect1 slide">
+<h1 id="_linkpage">Linkpage</h1>
+<div class="sectionbody" style="max-width:50em">
+<div class="paragraph"><p><a href="./prezentacia.html#(2)">link</a></p></div>
 </div>
 </div>
 </body>
